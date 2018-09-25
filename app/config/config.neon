@@ -1,0 +1,68 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+parameters:
+	errbit:
+		send_errors: false
+
+	redis:
+		host: @environmentConfig::get('CRM_REDIS_HOST')
+		port: @environmentConfig::get('CRM_REDIS_PORT')
+
+extensions:
+	local_configs: Crm\ApplicationModule\Config\ConfigExtension
+	translation: Kdyby\Translation\DI\TranslationExtension
+	- Crm\ApplicationModule\DI\ApplicationModuleExtension
+	- Crm\ApiModule\DI\ApiModuleExtension
+	- Crm\AdminModule\DI\AdminModuleExtension
+	- Crm\DashboardModule\DI\DashboardModuleExtension
+	users: Crm\UsersModule\DI\UsersModuleExtension
+	- Crm\SubscriptionsModule\DI\SubscriptionsModuleExtension
+	- Crm\SegmentModule\DI\SegmentModuleExtension
+
+# parameters for extensions
+users:
+	countries:
+		default: @environmentConfig::get('CRM_DEFAULT_COUNTRY_ISO')
+
+translation:
+	default: @environmentConfig::get('CRM_LANG')
+	fallback: [en_US, en]
+	resolvers:
+		# english system locale (and Accept header) would enforce english language, see Kdyby\Translation\LocaleResolver\AcceptHeaderResolver
+		header: off
+
+php:
+	date.timezone: Europe/Bratislava
+
+security:
+	debugger: true
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: Crm\*Module\Presenters\*Presenter
+	# TODO: we need to scan composer to properly register extensions
+	scanComposer: yes
+
+session:
+	expiration: 14 days
+	autoStart: true
+
+http:
+	frames: yes
+
+tracy:
+	netteMailer: no
+
+database:
+	default:
+		dsn: @environmentConfig::getDsn()
+		user: @environmentConfig::get('CRM_DB_USER')
+		password: @environmentConfig::get('CRM_DB_PASS')
+		options:
+			lazy: yes
+

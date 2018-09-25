@@ -1,0 +1,15 @@
+log/*
+vendor/*
+!.gitignore
+!.htaccess
+
+.env
+config.local.neon
+docker-compose.override.yml
+
+/.idea
+/.vscode
+.history
+
+.DS_Store
+Thumbs.db

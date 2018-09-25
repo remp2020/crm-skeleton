@@ -1,0 +1,21 @@
+{
+	"name": "remp/crm-skeleton",
+	"description": "REMP - CRM Skeleton",
+	"type": "project",
+	"homepage": "https://remp2020.com",
+	"license": "MIT",
+	"config": {
+		"sort-packages": true
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true,
+	"require": {
+		"remp/crm-admin-module": "dev-master",
+		"remp/crm-api-module": "dev-master",
+		"remp/crm-application-module": "dev-master",
+		"remp/crm-dashboard-module": "dev-master",
+		"remp/crm-segment-module": "dev-master",
+		"remp/crm-subscriptions-module": "dev-master",
+		"remp/crm-users-module": "dev-master"
+	}
+}

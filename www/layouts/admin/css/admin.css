@@ -1,0 +1,33 @@
+.avatar {
+    border-radius: 50%
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle;
+}
+
+.panel-title ul.date_switcher {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.panel-title ul.date_switcher li {
+    display: inline;
+}
+
+div.ace_editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.table .list-group {
+    margin-bottom: 0;
+}
+
+.table .list-group-item {
+    padding: 5px 15px;
+}
