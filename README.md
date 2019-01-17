@@ -23,8 +23,17 @@ This is a pre-configured skeleton of CRM application with simple installation.
 
 ### CRM Skeleton
 
+To create skeleton application which will be run directly on the host machine, use:
+
    ```
    composer create-project remp/crm-skeleton path/to/install
+   ```
+   
+If you plan to use our Docker Compose appliance to run application, skip vendor installation as you might not have
+all extensions installed on your host machine.
+
+   ```
+   composer create-project --no-install remp/crm-skeleton path/to/install
    ```
 
    ```
