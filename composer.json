@@ -10,12 +10,12 @@
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require": {
-		"remp/crm-admin-module": "dev-master",
-		"remp/crm-api-module": "dev-master",
-		"remp/crm-application-module": "dev-master",
-		"remp/crm-dashboard-module": "dev-master",
-		"remp/crm-segment-module": "dev-master",
-		"remp/crm-subscriptions-module": "dev-master",
-		"remp/crm-users-module": "dev-master"
+		"remp/crm-admin-module": "~0.2",
+		"remp/crm-api-module": "~0.2",
+		"remp/crm-application-module": "~0.2",
+		"remp/crm-dashboard-module": "~0.2",
+		"remp/crm-segment-module": "~0.2",
+		"remp/crm-subscriptions-module": "~0.2",
+		"remp/crm-users-module": "~0.2"
 	}
 }
