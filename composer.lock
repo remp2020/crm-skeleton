@@ -2625,16 +2625,16 @@
         },
         {
             "name": "remp/crm-users-module",
-            "version": "0.2.3",
+            "version": "0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-users-module.git",
-                "reference": "64b4f33b83f2b54a8ff8ea1ae4ac8ad7a6a86ff9"
+                "reference": "6648cf4e8a7d815b2207ba5f71509a6c91df5f1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/64b4f33b83f2b54a8ff8ea1ae4ac8ad7a6a86ff9",
-                "reference": "64b4f33b83f2b54a8ff8ea1ae4ac8ad7a6a86ff9",
+                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/6648cf4e8a7d815b2207ba5f71509a6c91df5f1a",
+                "reference": "6648cf4e8a7d815b2207ba5f71509a6c91df5f1a",
                 "shasum": ""
             },
             "require": {
@@ -2658,7 +2658,7 @@
             ],
             "description": "CRM Users Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-02-20T21:29:30+00:00"
+            "time": "2019-02-20T23:20:00+00:00"
         },
         {
             "name": "robmorgan/phinx",
