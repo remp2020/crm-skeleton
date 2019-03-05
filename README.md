@@ -122,9 +122,7 @@ Recommended _(tested)_ versions are:
             - Password: `password`
 
 
-## Modules
-
-### Included
+## Available modules
 
 - [Application](https://github.com/remp2020/crm-application-module)
 - [Api](https://github.com/remp2020/crm-api-module)
@@ -137,24 +135,179 @@ Recommended _(tested)_ versions are:
 
 - Payments module
 
-### Custom module implementation
+## Custom module implementation
 
-All modules have to implement `\Crm\ApplicationModule\ApplicationModuleInterface` and therefore all are dependent on an application module we provide.
+### Definition of the module
 
-We have prepared abstract class `CrmModule` to extend. It includes all extension points the `ApplicationManager` can work with. This section will help you to understand each integration point - what it its purpose and how to use it. You can always use any of the provided modules as a referece for how to structure the code.
+All modules have to implement `Crm\ApplicationModule\ApplicationModuleInterface` and therefore all are dependent on an application module we provide.
 
-Following integration points are ordered alphabetically. The example snippets display the primary usage of the integration points, you're free to explore and use other parameters of the call.
+We have prepared abstract class `CrmModule` to extend that implements this interface. It includes all extension points the `ApplicationManager` can work with. This section will help you to understand each integration point - what it its purpose and how to use it. You can always use any of the provided modules as a referece for how to structure the code.
+
+Your module implementation should be placed within `app/modules` folder. To create `DemoModule` you'd need to:
+
+* Create folder `app/modules/DemoModule`
+* Create class `Crm\DemoModule\DemoModule` within the created folder with the definition of module, extending `Crm\ApplicationModule\CrmModule`.
+    ```php
+    <?php
+
+    namespace Crm\DemoModule;
+
+    class DemoModule extends \Crm\ApplicationModule\CrmModule
+    {
+        // register your extension points based on the documentation below
+    }
+    ```
+* Register the module definition to be used by application in your `app/config/config.neon` file.
+    ```php
+    services:
+	    moduleManager:
+		    setup:
+			    - addModule(Crm\DemoModule\DemoModule())
+    ```
+
+Your module is now ready and registered within application. You can start extending the application via following extension points or by implementing your own presenters.
+
+### Implementing presenters
+
+#### Frontend presenters
+
+One of the main reasons to create your own module is to present/receive new information from/by user. This section provides brief introduction of the dummy presenter creation in Nette within CRM. If you're not familiar with Nette framework, it's highly recommended to read about presenters and components on official [Nette documentation page](https://doc.nette.org/en/2.4/presenters).
+
+The application by default scans the source code and match all presenters matching the mapping configured in `config.neon`. You're free to extend the mapping as needed:
+
+```neon
+application:
+	mapping:
+		*: Crm\*Module\Presenters\*Presenter
+	scanComposer: yes
+```
+
+The definition will include all presenters whose fully resolved class name matches the pattern above (asterisk standing for wildcard). See that the application doesn't care where the files are stored - the namespace and class name is important.
+
+The standard we used for storing files is to store Presenters within one subdirectory of each module, Templates within their own directory and Components within their own directory. This might be the structure of your new `DemoModule`. We recommend to follow this standard just to keep the code easily browsable.
+
+```
+app/
+    modules/
+        DemoModule/
+            presenters/
+                DemoPresenter.php
+            templates/
+                DemoPresenter/
+                    default.latte
+            DemoModule.php
+```
+
+Frontend (end-user-facing) presenters should always extend `Crm\ApplicationModule\Presenters\FrontendPresenter` which provides extra variables to the layout, sets the layout based on the application configuration and does unified execution that's common for all frontend presenters - feel free to explore the code or extend it further.
+
+```php
+class DemoPresenter extends \Crm\ApplicationModule\Presenters\FrontendPresenter\
+{
+    public function startup()
+    {
+        // in this example we want DemoPresenter be available only to logged in users
+        $this->onlyLoggedIn();
+
+        parent::startup();
+    }
+
+    public function renderDefault()
+    {
+        $this->template->userId = $this->getUser()->getUserId();
+    }
+}
+```
+
+In the example we created the minimal version of Presenter (without any extra external dependencies) and passed `userId` parameter to the template. Let's see how `app/modules/DemoModule/templates/DemoPresenter/default.latte` might look like:
+
+```latte
+{block title}{_demo.default.title}{/block}
+
+{block #content}
+
+{control 'simpleWidget', 'frontend.demo.top'}
+
+<div class="page-header">
+  <h1>Demo default</h1>
+</div>
+
+<div n:ifset="$userId" class="row">
+  <div class="col-md-12">
+    Hello {$userId}
+  </div>
+</div>
+```
+
+Couple of things happened in the example template:
+
+* We used `_` helper function for translating the content. See [Translations](#Translations) section for more information.
+* We rendered data into different blocks of layout: `title` and `content`.
+  * The `title` is usually placed within `<head>` tag of the layout. The default frontend layout provided by CRM render it this way:
+
+    ```latte
+        <title>{ifset #title}{include title|striptags} | {/ifset}{$siteTitle}</title>
+    ```
+
+  * The `content` should include default content of the page. All templates should write into the `#content` block.
+  
+  If you use your own layout, you can utilize these blocks further more, this serves as a simple example to point the direction and to explain that the `#content` block needs to be used in the default setting. You can read more about blocks at [the official documentation page](https://latte.nette.org/en/macros#toc-blocks)
+* We used `simpleWidget` component to prepare placeholder for widget from other modules to be included in our template. See section [registerWidgets](#registerWidgets) to read more about widgets.
+* We used latte-specific condition `n:ifset` to render the `div` block only when the `$userId` variable is present. If you're not familiar with Latte, please check the documentation at [latte.nette.org](https://latte.nette.org/en/) and macros that are available.
+
+As the presenters are being scanned and matched by the wildcard pattern, there's no need to register them further in your `config.neon` file. The DI container is able to provide any dependencies to the Presenters either via constructor or via [`@inject` annotation](https://doc.nette.org/en/2.4/di-usage#toc-passing-by-an-inject-method).
+
+If the action should be accessible within fronted menu, don't forget to [registerFrontendMenuItems](#registerFrontendMenuItems).
+
+#### Admin presenter (extra steps)
+
+Administration presenters are similar to [Frontend presenters](#frontend-presenters), however they provide some extra features - mainly ACL.
+
+All administration presenters should extend `Crm\AdminModule\Presenters\AdminPresenter`. The rest works the same way as frontend presenters.
+
+```php
+class DemoAdminPresenter extends \Crm\AdminModule\Presenters\AdminPresenter
+{
+    public function renderDefault()
+    {
+        // in Admin presenters even empty render methods are necessary
+    }
+}
+```
+
+Nette by default allows you not to include `render*` method if it doesn't do anything and will directly pass the execution to the template. In Admin presenters that's not the case. Due to the way how ACL works - it scans `render*` methods in classes inheriting from `AdminPresenter` - all access points should have their `render` method implemented even if it should be empty.
+
+When you create new Admin presenter or even new action within Admin presenter, you need to refresh the ACL rules to include the new action:
+
+```
+# refreshing ACL will create new ACL rule matching new admin actions
+php bin/command.php user:generate_access
+
+# seeding will assign access right to the newly generated action to superadmin role
+php bin/command.php application:seed
+```
+
+You can then assign the access to admin actions to specific roles (and create new roles) at `/users/admin-group-admin/`.
+
+If the action should be accessible within admin menu, don't forget to [registerAdminMenuItems](#registerAdminMenuItems).
+
+#### Translations
+
+*to be delivered in the near future*
+
+### Integration with the application
+
+Each of the following subheadings represent method of `ApplicationModuleInterface` that can be extended by your module. Example snippets in this section display the primary usage of the integration points, you're free to explore and use other parameters of the call.
 
 #### registerAdminMenuItems
 
-CRM provides you with two separate user interfaces - one for end users and one for administrators of the system (backoffice). Each module can register its own items which are then injected into the top menu.
+CRM provides you with two separate user interfaces - one for end users and one for administrators of the system (CRM admin). Each module can register its own items which are then injected into the top menu.
 
 Usually each module registers it's own main menu item and inserts all its features as subitems of this main menu item. It is also possible to inject submenu items to other main menu items if they're present.
 
-When you register the menu item, you can provide the label, Nette route link, CSS class to be used to prefix the label (primarily for using Font Awesome icons) and the sorting index to control the order of items.
+When you register the menu item, you can provide the label, Nette route link (you can read more about [Nette routing here](https://doc.nette.org/en/2.4/routing), CSS class to be used to prefix the label (primarily for using Font Awesome icons) and the sorting index to control the order of items.
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerAdminMenuItems(MenuContainerInterface $menuContainer)
@@ -169,16 +322,16 @@ class DemoModule implements ApplicationModuleInterface
 }
 ```
 
-If any of the items are restricted to currently logged user by ACL, the menu items will not show for them.
+If any of the items are restricted to currently logged user by ACL, the menu items will not be shown for them.
 
-#### registerFrontendMenuItem
+#### registerFrontendMenuItems
 
 CRM allows each module to register main menu and submenu items on frontend side of the application - available to end users. It works the same way `registerAdminMenuItems` does, it just affects different part of the system.
 
 As there's no ACL on the frontend side, each registered item will be shown to the end user.
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerFrontendMenuItems(MenuContainerInterface $menuContainer)
@@ -193,17 +346,17 @@ class DemoModule implements ApplicationModuleInterface
 
 #### registerEventHandlers
 
-Each module is able to trigger any avaiable implementation of League (TODO) event during the execution throught League's Emitter. These are all synchronous events and all handlers are executed immediatelly when the event is emitted.
+Each module is able to trigger any avaiable implementation of League's `\League\Event\AbstractEvent` during the execution throught League's *Emitter*. These are all synchronous events and all handlers are executed immediatelly when the event is emitted.
 
-Application lets you add the listener to any event type. As the event type is essentially only the string (even when we use full class name for that), it's safe to listen to other module events - if the module won't be registered to be used, your listeners will just not be ever triggered.
+Application lets you add the listener to any event type. As the event type is essentially only the string (even when we use full class name for that), it's safe to listen to other module events - if the target module containing execution code emitting the event won\t be registered in `config.neon`, your listeners will not be triggered, but the rest of your module will remain unaffected.
 
 Here's the example of registering the listener to one of the events provided by `UsersModule`.
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerEventHandlers(Emitter $emitter)
+    public function registerEventHandlers(\League\Event\Emitter $emitter)
     {
         $emitter->addListener(
             \Crm\UsersModule\Events\UserMetaEvent::class,
@@ -232,7 +385,7 @@ class DemoUserEvent extends \League\Event\AbstractEvent
 }
 ```
 
-Emitting the event anywhere in your code - for example in Presenters (when handling user actions), Repositories (when updating the database) or success handlers of your forms:
+You can then emit the event anywhere in your code - for example in Presenters (when handling user actions), Repositories (when updating the database) or success handlers of your forms:
 
 ```php
 class DemoRepository extends \Crm\ApplicationModule\Repository
@@ -241,19 +394,22 @@ class DemoRepository extends \Crm\ApplicationModule\Repository
 
     protected $tableName = 'demo';
 
-    public function __construct(Context $database, Emitter $emitter, IStorage $cacheStorage = null)
-    {
+    public function __construct(
+        \Nette\Database\Context $database,
+        \League\Event\Emitter $emitter,
+        \Nette\Caching\IStorage $cacheStorage = null
+    ) {
         parent::__construct($database, $cacheStorage);
         $this->emitter = $emitter;
     }
 
-    public function save(\Nette\Database\Table\ActiveRow $user, tring $demoValue)
+    public function save(\Nette\Database\Table\ActiveRow $user, string $demoValue)
     {
         $result = $this->insert([
             'value' => $demoValue,
         ]);
         if ($result) {
-            // HERE YOU EMIT YOUR EVENT
+            // HERE'S THE EXAMPLE OF EMITTING YOUR EVENT
             $this->emitter->emit(new DemoUserEvent($user->id, $demoValue));
         }
         return $result;
@@ -261,7 +417,7 @@ class DemoRepository extends \Crm\ApplicationModule\Repository
 }
 ```
 
-Once the event is emitted, the listeners will pick it up. Here's the example implementation of handler that get's to listen to events:
+Once the event is emitted, the listeners will pick it up. Here's the example implementation of handler that gets to listen to events:
 
 ```php
 class DemoHandler extends \League\Event\AbstractListener
@@ -274,9 +430,11 @@ class DemoHandler extends \League\Event\AbstractListener
 }
 ```
 
-See, that at no point the application checked whether the handler did really receive the event it expects it to receive - whether the event really has `getUserId()` method. It's up to your implementation to decide whether and when to check this.
+See, that at no point the application checked whether the handler did really receive the event it expects to receive - whether the event really has `getUserId()` method. It's up to your implementation to decide whether and when to check this.
 
-Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your widget class in the `config.neon` file of your module.
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your listener class in the `config.neon` file.
+
+For more information about Event's implementation possibilities, please visit [documentation page](https://event.thephpleague.com/2.0/emitter/basic-usage/) of ThePhpLeague.
 
 #### registerWidgets
 
@@ -286,13 +444,13 @@ The base example is the detail page of the user owned by `UsersModule`. By defau
 
 As a module developer, you're free to provide as many placeholders for widgets and register as many widgets as you want. Then, by simply enabling and disabling modules, whole blocks of website can be displayed/removed without affecting the rest of the application.
 
-When registering a widget, you speficy a placeholder where the widget will be shown and the implementation of your widget class. Optionally you can pass the priority of the widget which affects which widgets will be rendered sooner and which later. Here's the example of registering the widget in your module class:
+When registering a widget, you specify a placeholder where the widget will be shown and the implementation of your widget class. Optionally you can pass the priority of the widget which affects which widgets will be rendered sooner and which later. Here's the example of registering the widget in your module class:
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerWidgets(WidgetManagerInterface $widgetManager)
+    public function registerWidgets(\Crm\ApplicationModule\Widget\WidgetManagerInterface $widgetManager)
     {
         $widgetManager->registerWidget(
             'admin.users.header',
@@ -302,7 +460,7 @@ class DemoModule implements ApplicationModuleInterface
 }
 ```
 
-Providing a placeholder for widgets is straight-forward. In your `.latte` template file, include following snippet to the space where you want the widgets to be displayed:
+Providing a placeholder for widgets is straight-forward. In your `.latte` template file, include the `control` macro to the space where you want the widgets to be displayed:
 
 ```latte
 <div class="row">
@@ -311,12 +469,13 @@ Providing a placeholder for widgets is straight-forward. In your `.latte` templa
       Widget Demo
     </h1>
 
+    <!-- THIS IS THE MACRO TO INCLUDE >
     {control simpleWidget 'admin.users.header'}
   </div>
 </div>
 ```
 
-In it's simplest form, the widget implementation is similar to presenters and actions. The widget's responsibility is to either render the output (usually by using `.latte` template) or decide that there's nothing to display and return nothing. Here's the example implementation of the bare widget:
+Now for the actual implementation of widgets. In it's simplest form, the widget implementation is similar to presenters and actions. The widget's responsibility is to either render the output (usually by using `.latte` template) or decide that there's nothing to display and return nothing. Here's the example implementation of the bare widget:
 
 ```php
 class DemoWidget extends BaseWidget
@@ -325,7 +484,7 @@ class DemoWidget extends BaseWidget
 
     public function identifier()
     {
-        return 'monthsubscriptionssmallbargraphwidget';
+        return 'demowidget';
     }
 
     public function render()
@@ -344,51 +503,59 @@ The widget referred to `demo.latte` placed within the same folder. Here's how it
 </div>
 ```
 
-Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your widget class in the `config.neon` file of your module.
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your widget class in the `config.neon` file.
 
 #### registerCommands
 
 Console commands are used to run scheduled or one-time tasks from the CLI. They're primarily targeted to be run by system's scheduler (CRON) or by service managing running of system services (systemd, Supervisor).
 
-All command classes should extend `Symfony\Component\Console\Command\Command` class and override `configure()` and `execute()` methods. We're using `Crm\ApplicationModule\Commands\CacheCommand` as the example class in the following snippets.
+All command classes should extend `Symfony\Component\Console\Command\Command` class and override `configure()` and `execute()` methods. We're using [`Crm\ApplicationModule\Commands\CacheCommand` command](https://github.com/remp2020/crm-application-module/blob/master/src/commands/CacheCommand.php) as the example class in the following snippets.
 
 Configure method serves to define command namespace, name, arguments and options (and whether they're mandatory or not).
 
 ```php
-protected function configure()
+class CacheCommand extends \Symfony\Component\Console\Command\Command
 {
-    $this->setName('application:cache')
-        ->setDescription('Resets application cache (per-module)')
-        ->addOption(
-            'tags',
-            null,
-            InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
-            'Tag specifies which group of cache values should be reset.'
-        );
+    // ...
+    protected function configure()
+    {
+        $this->setName('application:cache')
+            ->setDescription('Resets application cache (per-module)')
+            ->addOption(
+                'tags',
+                null,
+                \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL | \Symfony\Component\Console\Input\InputOption::VALUE_IS_ARRAY,
+                'Tag specifies which group of cache values should be reset.'
+            );
+    }
 }
 ```
 
-When you have the definition ready, you can start implementing the handler. Here's the example implementation. See that any input is readable from `InputInterface $input` and you can write any of your output to `OutputInterface $output` provided by the `execute` method.
+When you have the definition ready, you can start implementing the handler. See that any input is readable from `InputInterface $input` and any of your output writable to `OutputInterface $output` provided by the `execute` method.
 
 ```php
-protected function execute(InputInterface $input, OutputInterface $output)
+class CacheCommand extends \Symfony\Component\Console\Command\Command
 {
-    $tags = $input->getOption('tags');
+    // ...
+    protected function execute(\Symfony\Component\Console\Input\InputInterface $input, \Symfony\Component\Console\Output\OutputInterface $output)
+    {
+        $tags = $input->getOption('tags');
 
-    foreach ($this->moduleManager->getModules() as $module) {
-        $className = get_class($module);
-        $output->writeln("Caching module <info>{$className}</info>");
-        $module->cache($output, $tags);
+        foreach ($this->moduleManager->getModules() as $module) {
+            $className = get_class($module);
+            $output->writeln("Caching module <info>{$className}</info>");
+            $module->cache($output, $tags);
+        }
     }
 }
 ```
 
 You can color your output or use completely custom output formatting if you want. See additional information about outputting at [Symfony's documentation](https://symfony.com/doc/current/console/coloring.html).
 
-Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your command execution class in the `config.neon` file of your module. Afterwards you need to register it in your Module class.
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your command execution class in the `config.neon` file. Afterwards you need to register it in your Module class.
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerCommands(CommandsContainerInterface $commandsContainer)
@@ -409,10 +576,9 @@ php bin/command.php application:cache
 API calls provide a way how external application or your frontend can reach your system's backend. Each API call handler has a separate class implementation. Following is an example implementation of API handler:
 
 ```php
-namespace Crm\DemoModule\Api;
-
 class FooHandler extends \Crm\ApiModule\Api\ApiHandler
 {
+    // ...
     public function params()
     {
         return [
@@ -420,7 +586,15 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
             new \Crm\ApiModule\Params\InputParam(\Crm\ApiModule\Params\InputParam::TYPE_POST, 'type', \Crm\ApiModule\Params\InputParam::OPTIONAL),
         ];
     }
+}
+```
 
+The `params()` method allows you to define GET/POST params and to flag them whether they should be required or not. These parameters can be later validated by `Crm\ApiModule\Params\ParamsProcessor`.
+
+```php
+class FooHandler extends \Crm\ApiModule\Api\ApiHandler
+{
+    // ...
     public function handle(\Crm\ApiModule\Authorization\ApiAuthorizationInterface $authorization)
     {
         // read provided params
@@ -459,7 +633,7 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
 }
 ```
 
-The `params()` method allows you to define GET/POST params and to flag them whether they should be required or not. The `handle()` method allows you to implement your business logic and return the output. By default all API handlers return text output. We used `JsonResponse` in our example to indicate `application/json` header and automatic JSON encoding of response by application.
+The `handle()` method allows you to implement your business logic and return the output. By default all API handlers return text output. We used `Crm\ApiModule\Api\JsonResponse` in our example to indicate `application/json` header and automatic JSON encoding of response by application.
 
 You might want to use JSON input instead of GET/POST parameters. To read JSON input, we advise to put following snippet to the beginning of `handle()` method:
 
@@ -482,18 +656,26 @@ try {
 // use $params as necessary
 ```
 
-Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your API handler class in the `config.neon` file of your module. Afterwards you need to register it in your Module class.
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your API handler class in the `config.neon` file. Afterwards you need to register it in your Module class.
 
-This implementation has to be linked to the specific API route in your Module class.
+When you create new handler, you should call console command to refresh ACL rules so they include this new API handler:
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+php bin/command.php api:generate_access
+```
+
+Created handlers are not assigned to any API key by default, you need to whitelist them manually by visiting `/api/api-access-admin/`.
+
+This implementation then has to be linked to the specific API route in your Module class.
+
+```php
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerApiCalls(ApiRoutersContainerInterface $apiRoutersContainer)
+    public function registerApiCalls(\Crm\ApiModule\Api\ApiRoutersContainerInterface $apiRoutersContainer)
     {
-        $apiRoutersContainer->attachRouter(new ApiRoute(
-            new ApiIdentifier('1', 'demo', 'foo'),
+        $apiRoutersContainer->attachRouter(new \Crm\ApiModule\Router\ApiRoute(
+            new \Crm\ApiModule\Router\ApiIdentifier('1', 'demo', 'foo'),
             \Crm\DemoModule\Api\FooHandler::class,
             \Crm\ApiModule\Authorization\NoAuthorization::class
         ));
@@ -501,26 +683,40 @@ class DemoModule implements ApplicationModuleInterface
 }
 ```
 
-Following definition will an endpoint accessible at `/api/v3/demo/foo`. The `NoAuthorization` class will allow everyone to use the API call. By default the API module provides these type of authorizations:
+The definition will make an endpoint accessible at `/api/v3/demo/foo`. The `NoAuthorization` class will allow everyone to use the API call.
+
+By default the API module provides these type of authorizations:
 
 * `AdminLoggedAuthorization`. Used primarily for API endpoints that should be accessible only from within CRM admin. It checks, whether user has an access to the administration part of the CRM and if he/she does, handler will be executed. Authorization is primarily read from the Nette session of logged user.
-* `UserTokenAuthorization`. Used primarily for user-related API calls (user data, list of subscriptions). Authorization expects token that was generated during login process. Once authorized, API call handler will get access to the token and to the user owning the token. The token should be provided within `Authorization: Bearer XXX` header.
+* `UserTokenAuthorization`. Used primarily for user-related API calls (user data, list of subscriptions). Authorization expects token that was generated during login process:
+
+    * If the user was logged directly via username and password within CRM, the token is stored within `n_token` cookie.
+    * If the user was logged in via API call, the token was returned within the success response.
+
+    Once authorized, API call handler will get access to the token and to the user owning the token. The token should be provided within `Authorization: Bearer XXX` header.
 * `BearerTokenAuthorization`. Used for server-server communication. You can generate API tokens in CRM admin (`/api/api-tokens-admin/`) and assign them access to the specific endpoints (`/api/api-access-admin/`). The token should be provided within `Authorization: Bearer XXX` header.
 * `NoAuthorization`. Used for API calls that should be publicly available - for example for tracking statistics from frontend.
 
-You can always make your own implementation of authorized and use that in your Module class when registering API handler to the route.
+You can always make your own implementation of `Crm\ApiModule\Authorization\ApiAuthorizationInterface` and use that in your Module class when registering API handler to the route.
 
-All registered API endpoints are listed at `/api/api-calls-admin/`. Requests to API are logged to `api_logs` MySQL table. The logging can be disabled in application configuration page, Other section (`/admin/config-admin/?categoryId=6`).
+All registered API endpoints are listed at `/api/api-calls-admin/`.
+
+Requests to API are logged to `api_logs` MySQL table. The logging can be disabled in application configuration page, Other section (`/admin/config-admin/?categoryId=6`).
 
 
 #### registerCleanupFunction
 
-`ApplicationModule` provides a console command to clean up unnecessary data from within the system (`php bin/command.php application:cleanup`). It's supposed to be run periodically by your system scheduler (CRON).
+`ApplicationModule` provides a console command to clean up unnecessary data from within the system by running:
+```
+php bin/command.php application:cleanup
+```
+
+It's supposed to be run periodically by your system scheduler (CRON).
 
 Each module can register its own cleanup function with the cleanup implementation. See what `UsersModule` gets to clean up:
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class UsersModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerCleanupFunction(CallbackManagerInterface $cleanUpManager)
@@ -543,11 +739,152 @@ In the example we requested the instance of `ChangePasswordsLogsRepository` and 
 
 #### registerHermesHandlers
 
-*to be delivered in the near future*
+Hermes is a tool (console command) for asynchronous processing of events. The application can generate an event with any arbitrary payload to be processed by registered handlers later.
+
+The asynchronous event processor is a console worker that should be run once and keep running forever (until the code changes). It automatically checks for new tasks and perform them. To run the worker, execute:
+```
+php bin/command.php application:hermes_worker
+```
+
+You can start listening to other module's events by adding following definition to your module:
+
+```php
+class DemoModule extends \Crm\ApplicationModule\CrmModule
+{
+    public function registerHermesHandlers(\Tomaj\Hermes\Dispatcher $dispatcher)
+    {
+        $dispatcher->registerHandler(
+            'dummy-event',
+            $this->getInstance(\Crm\DemoModule\Hermes\FooHandler::class)
+        );
+    }
+}
+```
+
+Every time the application (effectively any module) emits the `dummy-event` event, your `FooHandler` will get executed. To emit such event, you need to call `emit()` method on the instance of `Tomaj\Hermes\Emitter`:
+
+```php
+<?php
+
+class DemoPresenter extends \Crm\ApplicationModule\Presenters\FrontendPresenter
+{
+    /** @var Tomaj\Hermes\Emitter @inject */
+    public $hermesEmitter;
+
+    public function renderDefault($id)
+    {
+        $this->emitter->emit(new \Crm\ApplicationModule\Hermes\HermesMessage('dummy-event', [
+            'fooId' => $id,
+            'userId' => $this->getUser()->getId(),
+        ]));
+    }
+}
+```
+
+The `DemoPresenter` created a new HermesMessage that will get stored in the storage and picked by the console worker later.
+
+By default, the messages are being processed in the same order as they're emitted, however it's possible to delay the execution of message to the specified time - see optional parameters of `HermesMessage` constructor.
+
+The Handler is implemented as a standalone class that gets the `Tomaj\Hermes\MessageInterface` as an input:
+
+```php
+class FooHandler implements \Tomaj\Hermes\Handler\HandlerInterface
+{
+    public function handle(\Tomaj\Hermes\MessageInterface $message): bool
+    {
+        $payload = $message->getPayload();
+
+        // your processing code
+
+        // return true if the execution went correctly, false other
+        return true;
+    }
+}
+```
+
+The handler can get the array payload from the message and do the processing. Handler is responsible for returning result value indicating whether the processing was done or not. If the handler returns `true`, processing is marked as OK. If the handler returns `false` or doesn't return a value, processing is marked as failed.
+
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your handler class in the `config.neon` file.
+
+##### Restarting the worker
+
+Remember that you should restart the worker(s) when the code changes, otherwise it would still use the old version of code that's loaded in the memory.
+
+If you use *systemd* or *supervisor* you can configure the tools to start the worker automatically when it stops and trigger the graceful stop of worker by touching `/tmp/hermes_restart` file. If you want to use different path of file to touch, you can override the setting in `config.neon`:
+
+```neon
+hermesRestart: Tomaj\Hermes\Restart\SharedFileRestart('/var/www/html/tmp/hermes_restart')
+```
 
 #### registerAuthenticators
 
-*to be delivered in the near future*
+Application allows you to authenticate via custom channels to complement standard email-password authentication. User might be authenticated by a cookie set by some other service, by a special one-time token in URL that was sent to you in an email or by an email and password verified against 3rd party API.
+
+CRM is shipped only with the standard `Crm\UsersModule\Authenticator\UsersAuthenticator`. You can register your own authenticator if necessary:
+
+```php
+class DemoModule extends \Crm\ApplicationModule\CrmModule
+{
+    // ...
+    public function registerAuthenticators(AuthenticatorManagerInterface $authenticatorManager)
+    {
+        $authenticatorManager->registerAuthenticator(
+            $this->getInstance(\Crm\DemoModule\Authenticator\FooAuthenticator::class)
+        );
+    }
+}
+```
+
+Here the `DemoModule` registers its own authenticator. For the sake of example, let's pretend that `FooAuthenticator` will authenticate people based on the `fooQuery` parameter, that was source from the GET parameter in the URL.
+
+```php
+class FooAuthenticator extends \Crm\ApplicationModule\Authenticator\BaseAuthenticator
+{
+    // ...
+    private $token;
+
+    public function setCredentials(array $credentials) : AuthenticatorInterface
+    {
+        parent::setCredentials($credentials);
+        $this->token = $credentials['fooQuery'] ?? null;
+        return $this;
+    }
+
+    public function authenticate()
+    {
+        if ($this->token === null) {
+            return false;
+        }
+        
+        $email = $this->tokenChecker->getEmailFromToken($this->token);
+        if (!$email) {
+            throw new \Nette\Security\AuthenticationException('invalid token', , \Crm\UsersModule\Auth\UserAuthenticator::IDENTITY_NOT_FOUND);
+        }
+        
+        $user = $this->userManager->loadUserByEmail($email);
+        if (!$user) {
+            throw new \Nette\Security\AuthenticationException('invalid token', , \Crm\UsersModule\Auth\UserAuthenticator::IDENTITY_NOT_FOUND);
+        }
+
+        $this->addAttempt($user->email, $user, $this->source, LoginAttemptsRepository::STATUS_TOKEN_OK);
+        return $user;
+    }
+}
+```
+
+The `FooAuthenticator` extracted the necessary `fooQuery` value from `$credentials` parameter. When the `authenticate()` method is then called, authentication is based on this token (or halted if the token is not present). If the authentication is OK, `$user` should be returned.
+
+You can prioritize authenticators when registering them in Module classes by using optional parameter of `registerAuthenticator` call.
+
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your authenticator class in the `config.neon` file.
+
+You might wonder who's responsible for populating `$credentials` parameter so that your parameter is included there. The data can come from different parts of the system, but mainly it's:
+
+* `Crm\UsersModule\Auth\UserAuthenticator` which is set as a default authenticator for Nette application.
+* `Crm\ApplicationModule\Presenters\FrontendPresenter` which extracts any relevant GET parameters and cookies and passes them to the `$credentials` parameter to be used by authenticators.
+
+The idea is that the application will populate `$credentials` array with any relevant values and each authenticator implementation will read only values that it understands. If the values are not there, the authenticator should pass the execution to the next authenticator in the queue.
+
 
 #### registerUserData
 
@@ -570,7 +907,7 @@ class UserMetaUserDataProvider implements UserDataProviderInterface
 }
 ```
 
-The `data` method returns array of public user data usable by the third party applications or services.
+The `data` method returns array of public user data usable by the third party applications or services. We recommend to put here any often-accessed user-related data that might be cached for faster future access.
 
 ```php
 class UserMetaUserDataProvider implements UserDataProviderInterface
@@ -630,7 +967,7 @@ class OrdersUserDataProvider implements UserDataProviderInterface
 }
 ```
 
-The `protect` method returns IDs of protected instances and targets this information to the *UserDataProvider* responsible for possible deletion of those instances. The implementation implies the dependency between the protector and protectee.
+The `protect` method returns IDs of protected instances and targets this information to the *UserDataProvider* responsible for possible deletion of those instances. The implementation implies the dependency between the protector and protectee. In this example the *UserDataProvider* of `ProductsModule` (our internal module) protects addresses related to the orders for future claim possibilities.
 
 ```php
 class SubscriptionsUserDataProvider implements UserDataProviderInterface
@@ -665,18 +1002,140 @@ The `delete` method non-reversibly deletes or anonymizes everything related to t
 
 #### registerSegmentCriteria
 
-*to be delivered in the near future*
+The `SegmentsModule` allows admin users to create segments of user based on specified set of conditions that are selectable in a user-friendly UI. Each module can add its own criteria and parameters that get registered to this UI. These criteria with parameters should be translatable to the query, that gets generated and executed by the `SegmentsModule`.
+
+To register your own criteria implementation to application, call:
+
+```php
+class DemoModule extends \Crm\ApplicationModule\CrmModule
+{
+    // ...
+    public function registerSegmentCriteria(CriteriaStorage $criteriaStorage)
+    {
+        $criteriaStorage->register(
+            'users',
+            'foo_criteria',
+            $this->getInstance(\Crm\DemoModule\Segment\FooCriteria::class)
+        );
+    }
+}
+```
+
+When registering the criteria, you have to provide target table on which you do the selection (the first parameter) - in the most cases it's segments of `users`. The implementation has to honor this selection and always select unique list of users with arbitrary fields.
+
+The implementation class should implement `Crm\ApplicationModule\Criteria\CriteriaInterface`. The methods are documented within the interface, but we include the brief description of the most important methods also here based on a Criteria implementation we use:
+
+```php
+class ActiveSubscriptionCriteria implements CriteriaInterface
+{
+    // ...
+    public function params(): array
+    {
+        return [
+            new DateTimeParam(
+                "active_at",
+                "Active at", 
+                "Filter only subscriptions active within selected period", 
+                false
+            ),
+            new StringArrayParam(
+                "contains",
+                "Content types", 
+                "Users who have access to selected content types", 
+                false, 
+                null, 
+                null, 
+                $this->contentAccessRepository->all()->fetchPairs(null, 'name')
+            ),
+            new StringArrayParam(
+                "type", 
+                "Types of subscription", 
+                "Users who have access to selected types of subscription", 
+                false, 
+                null, 
+                null, 
+                array_keys($this->subscriptionsRepository->availableTypes())
+            ),
+            new NumberArrayParam(
+                "subscription_type", 
+                "Subscription types", 
+                "Users who have access to selected subscription types", 
+                false, 
+                null, 
+                null, 
+                $this->subscriptionTypesRepository->all()->fetchPairs("id", "name")
+            ),
+            new BooleanParam(
+                "is_recurrent", 
+                "Recurrent subscriptions", 
+                "Users who had at least one recurrent subscription"
+            ),
+        ];
+    }
+}
+```
+
+The `params` method defined list of available parameters for `ActiveSubscriptionCriteria` - parametrized condition based on a subset of users having active subscription. The parameters can further descibe "when" the user had an active subscription, filter only users with access to specific content type, with specific type of subscription or with recurrent payment.
+
+```php
+class ActiveSubscriptionCriteria implements CriteriaInterface
+{
+    // ...
+    public function join(ParamsBag $params): string
+    {
+        $where = [];
+
+        if ($params->has('active_at')) {
+            $where = array_merge($where, $params->datetime('active_at')->escapedConditions('subscriptions.start_time', 'subscriptions.end_time'));
+        }
+
+        if ($params->has('contains')) {
+            $values = $params->stringArray('contains')->escapedString();
+            $where[] = " content_access.name IN ({$values}) ";
+        }
+
+        if ($params->has('type')) {
+            $values = $params->stringArray('type')->escapedString();
+            $where[] = " subscriptions.type IN ({$values}) ";
+        }
+
+        if ($params->has('subscription_type')) {
+            $values = $params->numberArray('subscription_type')->escapedString();
+            $where[] = " subscription_types.id IN ({$values}) ";
+        }
+
+        if ($params->has('is_recurrent')) {
+            $where[] = " subscriptions.is_recurrent = {$params->boolean('is_recurrent')->number()} ";
+        }
+
+        return "SELECT DISTINCT(subscriptions.user_id) AS id, " . Fields::formatSql($this->fields()) . "
+          FROM subscriptions
+          INNER JOIN subscription_types ON subscription_types.id = subscriptions.subscription_type_id
+          INNER JOIN subscription_type_content_access ON subscription_type_content_access.subscription_type_id = subscription_types.id
+          INNER JOIN content_access ON content_access.id = subscription_type_content_access.content_access_id
+          WHERE " . implode(" AND ", $where);
+    }
+}
+```
+
+The `join` method generates actual subquery, that will be used to join on by the master segment query generator. You can see that each parameter defined previously should alter the final query in its own way and it's up to developer to handle the conditions and their values correctly.
+
+You can check the rest of the implementation of [`Crm\SubscriptionsModule\Segment\ActiveSubscriptionCriteria` here](https://github.com/remp2020/crm-subscriptions-module/blob/master/src/segment/ActiveSubscriptionCriteria.php) to get full picture.
+
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your criteria class in the `config.neon` file.
+
+When the implementation is ready, you can check your new Criteria in action at `/segment/stored-segments/new`.
 
 #### registerRoutes
 
-CRM by default uses couple of default route patterns provided `Crm\ApplicationModule\Router\RouterFactory`. The very default one - `<module>/<presenter>/<action>[/<id>]` - is matching module, presenter and action in the URL and passing any string provided after the action as an `$id` parameter to action handler.
+CRM by default uses couple of default route patterns provided `Crm\ApplicationModule\Router\RouterFactory`. The very default route - `<module>/<presenter>/<action>[/<id>]` - is matching module/presenter/action in the URL and passing any string provided after the action as an `$id` parameter to action handler.
 
-If no `action` is provided, `default` action is executed (`renderDefault` method of matched presenter). For any other caveats, please see the [Nette framework routing documentation](https://doc.nette.org/en/2.4/routing).
+If no `action` is provided, `default` action is executed (`renderDefault` method of matched presenter), if no `presenter` is provided, `DefaultPresenter` is used. For any other caveats, please see the [Nette framework routing documentation](https://doc.nette.org/en/2.4/routing).
 
 Each module can register its own routes that would be matched before the default ones. Custom routes can be used for nice URLs of special promotions or just so the most used paths of the system have a URL that's not generated from module/presenter/action combination. See the route defined by `UsersModule`:
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerRoutes(RouteList $router)
@@ -693,7 +1152,7 @@ It has registered `sign/in/` route to be forwarded to `UsersModule` / `SignPrese
 `ApplicationModule` provides a console command to periodically cache any kind of data the module would wanted to have cached (`php bin/command.php application:cache`). It can be temporary data that gets refreshed periodically (e.g. statistical pre-calculations) or persistent data that should be cached only after the release (e.g. application routes).
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function cache(OutputInterface $output, array $tags = [])
@@ -712,7 +1171,7 @@ You can use `$tags` to filter different type of cached data or different periodi
 Modules can register multiple layouts, that are used when rendering the customer-facing frontend. CRM ships with the very simple `frontend` layout registered by `ApplicationModule`. You're free to register new layouts (created based on the `frontend` as reference implementation) and use them across the application.
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerLayouts(LayoutManager $layoutManager)
@@ -793,11 +1252,11 @@ public function seed(OutputInterface $output)
 
 The implementation checks whether the config category already exists or not. If it doesn't, it creates it and retrieves the reference. Afterwards it creates new `enable_api_log` config option that can be used within the application to check whether the API calls should be logged or not - see the usage in `\Crm\ApiModule\Presenters\ApiPresenter`. Every step is written to the `$output` just for the sake of logging and visibility of changes.
 
-Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your seeder class in the `config.neon` file of your module. Afterwards you need to register it in your Module class.
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your seeder class in the `config.neon` file. Afterwards you need to register it in your Module class.
 
 #### registerAccessProvider
 
-*to be delivered in the near future*
+*to be delivered in the future*
 
 #### registerDataProviders
 
@@ -810,7 +1269,7 @@ The other nice example are charts. Generic implementation of chart can contain l
 Here's the example of registering data provider within your module class:
 
 ```php
-class DemoModule implements ApplicationModuleInterface
+class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
     public function registerDataProviders(DataProviderManager $dataProviderManager)
@@ -887,4 +1346,4 @@ class DemoDataProvider
 }
 ```
 
-Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your widget class in the `config.neon` file of your module.
+Nette provides you with DI in the constructor to include any dependencies you need. Due to that, don't forget to register your widget class in the `config.neon` file.
