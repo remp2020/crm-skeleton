@@ -147,6 +147,7 @@ Your module implementation should be placed within `app/modules` folder. To crea
 
 * Create folder `app/modules/DemoModule`
 * Create class `Crm\DemoModule\DemoModule` within the created folder with the definition of module, extending `Crm\ApplicationModule\CrmModule`.
+    
     ```php
     <?php
 
@@ -157,12 +158,14 @@ Your module implementation should be placed within `app/modules` folder. To crea
         // register your extension points based on the documentation below
     }
     ```
+    
 * Register the module definition to be used by application in your `app/config/config.neon` file.
-    ```php
+    
+    ```neon
     services:
-	    moduleManager:
-		    setup:
-			    - addModule(Crm\DemoModule\DemoModule())
+        moduleManager:
+            setup:
+                - addModule(Crm\DemoModule\DemoModule())
     ```
 
 Your module is now ready and registered within application. You can start extending the application via following extension points or by implementing your own presenters.
@@ -177,9 +180,9 @@ The application by default scans the source code and match all presenters matchi
 
 ```neon
 application:
-	mapping:
-		*: Crm\*Module\Presenters\*Presenter
-	scanComposer: yes
+    mapping:
+        *: Crm\*Module\Presenters\*Presenter
+    scanComposer: yes
 ```
 
 The definition will include all presenters whose fully resolved class name matches the pattern above (asterisk standing for wildcard). See that the application doesn't care where the files are stored - the namespace and class name is important.
@@ -201,7 +204,7 @@ app/
 Frontend (end-user-facing) presenters should always extend `Crm\ApplicationModule\Presenters\FrontendPresenter` which provides extra variables to the layout, sets the layout based on the application configuration and does unified execution that's common for all frontend presenters - feel free to explore the code or extend it further.
 
 ```php
-class DemoPresenter extends \Crm\ApplicationModule\Presenters\FrontendPresenter\
+class DemoPresenter extends \Crm\ApplicationModule\Presenters\FrontendPresenter
 {
     public function startup()
     {
@@ -278,7 +281,7 @@ Nette by default allows you not to include `render*` method if it doesn't do any
 
 When you create new Admin presenter or even new action within Admin presenter, you need to refresh the ACL rules to include the new action:
 
-```
+```bash
 # refreshing ACL will create new ACL rule matching new admin actions
 php bin/command.php user:generate_access
 
@@ -319,6 +322,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
 
         $menuContainer->attachMenuItem($mainMenu);
     }
+    // ...
 }
 ```
 
@@ -363,6 +367,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
             $this->getInstance(\Crm\ApplicationModule\Events\RefreshUserDataTokenHandler::class)
         );
     }
+    // ...
 }
 ```
 
@@ -457,6 +462,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
             $this->getInstance(\Crm\SubscriptionsModule\Components\MonthSubscriptionsSmallBarGraphWidget::class)
         );
     }
+    // ...
 }
 ```
 
@@ -528,6 +534,7 @@ class CacheCommand extends \Symfony\Component\Console\Command\Command
                 'Tag specifies which group of cache values should be reset.'
             );
     }
+    // ...
 }
 ```
 
@@ -547,6 +554,7 @@ class CacheCommand extends \Symfony\Component\Console\Command\Command
             $module->cache($output, $tags);
         }
     }
+    // ...
 }
 ```
 
@@ -562,6 +570,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
     {
         $commandsContainer->registerCommand($this->getInstance(\Crm\ApplicationModule\Commands\CacheCommand::class));
     }
+    // ...
 }
 ```
 
@@ -586,6 +595,7 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
             new \Crm\ApiModule\Params\InputParam(\Crm\ApiModule\Params\InputParam::TYPE_POST, 'type', \Crm\ApiModule\Params\InputParam::OPTIONAL),
         ];
     }
+    // ...
 }
 ```
 
@@ -630,6 +640,7 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
         $response->setHttpCode(Response::S200_OK);
         return $response;
     }
+    // ...
 }
 ```
 
@@ -660,7 +671,7 @@ Nette provides you with DI in the constructor to include any dependencies you ne
 
 When you create new handler, you should call console command to refresh ACL rules so they include this new API handler:
 
-```php
+```bash
 php bin/command.php api:generate_access
 ```
 
@@ -832,6 +843,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
             $this->getInstance(\Crm\DemoModule\Authenticator\FooAuthenticator::class)
         );
     }
+    // ...
 }
 ```
 
@@ -904,6 +916,7 @@ class UserMetaUserDataProvider implements UserDataProviderInterface
         }
         return $result;
     }
+    // ...
 }
 ```
 
@@ -921,6 +934,7 @@ class UserMetaUserDataProvider implements UserDataProviderInterface
         }
         return $result;
     }
+    // ...
 }
 ```
 
@@ -944,6 +958,7 @@ class PaymentsUserDataProvider implements UserDataProviderInterface
 
         return $files;
     }
+    // ...
 }
 ```
 
@@ -964,6 +979,7 @@ class OrdersUserDataProvider implements UserDataProviderInterface
 
         return [AddressesUserDataProvider::identifier() => array_unique(array_filter($exclude), SORT_NUMERIC)];
     }
+    // ...
 }
 ```
 
@@ -982,6 +998,7 @@ class SubscriptionsUserDataProvider implements UserDataProviderInterface
 
         return [true, null];
     }
+    // ...
 }
 ```
 
@@ -995,6 +1012,7 @@ class AddressChangeRequestsUserDataProvider implements UserDataProviderInterface
     {
         $this->addressChangeRequestsRepository->deleteAll($userId);
     }
+    // ...
 }
 ```
 
@@ -1018,6 +1036,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
             $this->getInstance(\Crm\DemoModule\Segment\FooCriteria::class)
         );
     }
+    // ...
 }
 ```
 
@@ -1190,16 +1209,16 @@ Every layout should includ `content` snippet, that gets replaced by the content 
 ```latte
 <html lang="sk-SK" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <head>
-	<title>{ifset #title}{include title|striptags} | {/ifset}DennikN</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<script type='text/javascript' src='{$basePath}/layouts/default/js/jquery-1.11.2.js'></script>
-	<link rel="stylesheet" href="{$basePath}/layouts/default/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{$basePath}/layouts/default/js/jquery-ui.css">
+    <title>{ifset #title}{include title|striptags} | {/ifset}DennikN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script type='text/javascript' src='{$basePath}/layouts/default/js/jquery-1.11.2.js'></script>
+    <link rel="stylesheet" href="{$basePath}/layouts/default/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$basePath}/layouts/default/js/jquery-ui.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <style type="text/css">
-    	html, body { font-family: 'Source Sans Pro'; }
+        html, body { font-family: 'Source Sans Pro'; }
     </style>
 </head>
 <body>
