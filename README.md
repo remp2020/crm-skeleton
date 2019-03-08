@@ -313,11 +313,11 @@ When you register the menu item, you can provide the label, Nette route link (yo
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerAdminMenuItems(MenuContainerInterface $menuContainer)
+    public function registerAdminMenuItems(\Crm\ApplicationModule\Menu\MenuContainerInterface $menuContainer)
     {
-        $mainMenu = new MenuItem('', '#', 'fa fa-link', 800);
+        $mainMenu = new \Crm\ApplicationModule\Menu\MenuItem('', '#', 'fa fa-link', 800);
 
-        $menuItem = new MenuItem($this->translator->translate('api.menu.api_tokens'), ':Api:ApiTokensAdmin:', 'fa fa-unlink', 200);
+        $menuItem = new \Crm\ApplicationModule\Menu\MenuItem($this->translator->translate('api.menu.api_tokens'), ':Api:ApiTokensAdmin:', 'fa fa-unlink', 200);
         $mainMenu->addChild($menuItem);
 
         $menuContainer->attachMenuItem($mainMenu);
@@ -338,9 +338,9 @@ As there's no ACL on the frontend side, each registered item will be shown to th
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerFrontendMenuItems(MenuContainerInterface $menuContainer)
+    public function registerFrontendMenuItems(\Crm\ApplicationModule\Menu\MenuContainerInterface $menuContainer)
     {
-        $menuItem = new MenuItem($this->translator->translate('payments.menu.payments'), ':Payments:Payments:My', '', 100);
+        $menuItem = new \Crm\ApplicationModule\Menu\MenuItem($this->translator->translate('payments.menu.payments'), ':Payments:Payments:My', '', 100);
         $menuContainer->attachMenuItem($menuItem);
     }
     // ...
@@ -484,7 +484,7 @@ Providing a placeholder for widgets is straight-forward. In your `.latte` templa
 Now for the actual implementation of widgets. In it's simplest form, the widget implementation is similar to presenters and actions. The widget's responsibility is to either render the output (usually by using `.latte` template) or decide that there's nothing to display and return nothing. Here's the example implementation of the bare widget:
 
 ```php
-class DemoWidget extends BaseWidget
+class DemoWidget extends \Crm\ApplicationModule\Widget\BaseWidget
 {
     private $templateName = 'demo.latte';
 
@@ -566,7 +566,7 @@ Nette provides you with DI in the constructor to include any dependencies you ne
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerCommands(CommandsContainerInterface $commandsContainer)
+    public function registerCommands(\Crm\ApplicationModule\Commands\CommandsContainerInterface $commandsContainer)
     {
         $commandsContainer->registerCommand($this->getInstance(\Crm\ApplicationModule\Commands\CacheCommand::class));
     }
@@ -608,11 +608,11 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
     public function handle(\Crm\ApiModule\Authorization\ApiAuthorizationInterface $authorization)
     {
         // read provided params
-        $paramsProcessor = new ParamsProcessor($this->params());
+        $paramsProcessor = new \Crm\ApiModule\Params\ParamsProcessor($this->params());
         $error = $paramsProcessor->isError();
         if ($error) {
-            $response = new JsonResponse(['status' => 'error', 'message' => $error]);
-            $response->setHttpCode(Response::S400_BAD_REQUEST);
+            $response = new \Crm\ApiModule\Api\JsonResponse(['status' => 'error', 'message' => $error]);
+            $response->setHttpCode(\Nette\Http\Response::S400_BAD_REQUEST);
             return $response;
         }
         $params = $paramsProcessor->getValues();
@@ -622,13 +622,13 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
         if (!$tokenParser->isOk()) {
             $this->errorMessage = $tokenParser->errorMessage();
             $response = new \Crm\ApiModule\Api\JsonResponse(['status' => 'error', 'message' => $tokenParser->errorMessage()]);
-            $response->setHttpCode(Response::S400_BAD_REQUEST);
+            $response->setHttpCode(\Nette\Http\Response::S400_BAD_REQUEST);
             return $response;
         }
         $token = $this->userData->getUserToken($tokenParser->getToken());
         if (!$token) {
             $response = new \Crm\ApiModule\Api\JsonResponse(['status' => 'error', 'message' => 'Token not found']);
-            $response->setHttpCode(Response::S404_NOT_FOUND);
+            $response->setHttpCode(\Nette\Http\Response::S404_NOT_FOUND);
             return $response;
         }
 
@@ -637,7 +637,7 @@ class FooHandler extends \Crm\ApiModule\Api\ApiHandler
             "token" => $token,
             "email" => $params["email"]
         ]);
-        $response->setHttpCode(Response::S200_OK);
+        $response->setHttpCode(\Nette\Http\Response::S200_OK);
         return $response;
     }
     // ...
@@ -651,16 +651,16 @@ You might want to use JSON input instead of GET/POST parameters. To read JSON in
 ```php
 $request = file_get_contents("php://input");
 if (empty($request)) {
-    $response = new JsonResponse(['status' => 'error', 'message' => 'Empty request body, JSON expected']);
-    $response->setHttpCode(Response::S400_BAD_REQUEST);
+    $response = new \Crm\ApiModule\Api\JsonResponse(['status' => 'error', 'message' => 'Empty request body, JSON expected']);
+    $response->setHttpCode(\Nette\Http\Response::S400_BAD_REQUEST);
     return $response;
 }
 
 try {
-    $params = Json::decode($request, Json::FORCE_ARRAY);
-} catch (JsonException $e) {
-    $response = new JsonResponse(['status' => 'error', 'message' => "Malformed JSON: " . $e->getMessage()]);
-    $response->setHttpCode(Response::S400_BAD_REQUEST);
+    $params = \Nette\Utils\Json::decode($request, \Nette\Utils\Json::FORCE_ARRAY);
+} catch (\Nette\Utils\JsonException $e) {
+    $response = new \Crm\ApiModule\Api\JsonResponse(['status' => 'error', 'message' => "Malformed JSON: " . $e->getMessage()]);
+    $response->setHttpCode(\Nette\Http\Response::S400_BAD_REQUEST);
     return $response;
 }
 
@@ -691,6 +691,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
             \Crm\ApiModule\Authorization\NoAuthorization::class
         ));
     }
+    // ...
 }
 ```
 
@@ -730,19 +731,20 @@ Each module can register its own cleanup function with the cleanup implementatio
 class UsersModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerCleanupFunction(CallbackManagerInterface $cleanUpManager)
+    public function registerCleanupFunction(\Crm\ApplicationModule\CallbackManagerInterface $cleanUpManager)
     {
-        $cleanUpManager->add(function (Container $container) {
-            /** @var ChangePasswordsLogsRepository $changePasswordLogsRepository */
-            $changePasswordLogsRepository = $container->getByType(ChangePasswordsLogsRepository::class);
+        $cleanUpManager->add(function (\Nette\DI\Container $container) {
+            /** @var \Crm\UsersModule\Repository\ChangePasswordsLogsRepository $changePasswordLogsRepository */
+            $changePasswordLogsRepository = $container->getByType(\Crm\UsersModule\Repository\ChangePasswordsLogsRepository::class);
             $changePasswordLogsRepository->removeOldData('-12 months');
         });
-        $cleanUpManager->add(function (Container $container) {
-            /** @var UserActionsLogRepository $changePasswordLogsRepository */
-            $userActionsLogRepository = $container->getByType(UserActionsLogRepository::class);
+        $cleanUpManager->add(function (\Nette\DI\Container $container) {
+            /** @var \Crm\UsersModule\Repository\UserActionsLogRepository $changePasswordLogsRepository */
+            $userActionsLogRepository = $container->getByType(\Crm\UsersModule\Repository\UserActionsLogRepository::class);
             $userActionsLogRepository->removeOldData('-12 months');
         });
     }
+    // ...
 }
 ```
 
@@ -762,6 +764,7 @@ You can start listening to other module's events by adding following definition 
 ```php
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
+    // ...
     public function registerHermesHandlers(\Tomaj\Hermes\Dispatcher $dispatcher)
     {
         $dispatcher->registerHandler(
@@ -769,6 +772,7 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
             $this->getInstance(\Crm\DemoModule\Hermes\FooHandler::class)
         );
     }
+    // ...
 }
 ```
 
@@ -837,7 +841,7 @@ CRM is shipped only with the standard `Crm\UsersModule\Authenticator\UsersAuthen
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerAuthenticators(AuthenticatorManagerInterface $authenticatorManager)
+    public function registerAuthenticators(\Crm\ApplicationModule\Authenticator\AuthenticatorManagerInterface $authenticatorManager)
     {
         $authenticatorManager->registerAuthenticator(
             $this->getInstance(\Crm\DemoModule\Authenticator\FooAuthenticator::class)
@@ -855,7 +859,7 @@ class FooAuthenticator extends \Crm\ApplicationModule\Authenticator\BaseAuthenti
     // ...
     private $token;
 
-    public function setCredentials(array $credentials) : AuthenticatorInterface
+    public function setCredentials(array $credentials) : \Crm\ApplicationModule\Authenticator\AuthenticatorInterface
     {
         parent::setCredentials($credentials);
         $this->token = $credentials['fooQuery'] ?? null;
@@ -878,9 +882,10 @@ class FooAuthenticator extends \Crm\ApplicationModule\Authenticator\BaseAuthenti
             throw new \Nette\Security\AuthenticationException('invalid token', , \Crm\UsersModule\Auth\UserAuthenticator::IDENTITY_NOT_FOUND);
         }
 
-        $this->addAttempt($user->email, $user, $this->source, LoginAttemptsRepository::STATUS_TOKEN_OK);
+        $this->addAttempt($user->email, $user, $this->source, \Crm\UsersModule\Repository\LoginAttemptsRepository::STATUS_TOKEN_OK);
         return $user;
     }
+    // ...
 }
 ```
 
@@ -905,7 +910,7 @@ Due to GDPR compliance, system is required to provide user with any kind of user
 The purpose of each method within the interface is described within the PHPDoc of an `UserDataProviderInterface`, following are implementation excerpts with their descriptions:
 
 ```php
-class UserMetaUserDataProvider implements UserDataProviderInterface
+class UserMetaUserDataProvider implements \Crm\ApplicationModule\User\UserDataProviderInterface
 {
     // ...
     public function data($userId)
@@ -923,7 +928,7 @@ class UserMetaUserDataProvider implements UserDataProviderInterface
 The `data` method returns array of public user data usable by the third party applications or services. We recommend to put here any often-accessed user-related data that might be cached for faster future access.
 
 ```php
-class UserMetaUserDataProvider implements UserDataProviderInterface
+class UserMetaUserDataProvider implements \Crm\ApplicationModule\User\UserDataProviderInterface
 {
     // ...
     public function download($userId)
@@ -941,7 +946,7 @@ class UserMetaUserDataProvider implements UserDataProviderInterface
 The `download` method returns array of all related user data. In general, return value of `data` is always subset of `download`.
 
 ```php
-class PaymentsUserDataProvider implements UserDataProviderInterface
+class PaymentsUserDataProvider implements \Crm\ApplicationModule\User\UserDataProviderInterface
 {
     // ...
     public function downloadAttachments($userId)
@@ -965,7 +970,7 @@ class PaymentsUserDataProvider implements UserDataProviderInterface
 The `downloadAttachments` method returns list of paths to files to include. In the example the `PaymentUserDataProvider` generates user invoices into the temporary files and returns list of paths to the caller.
 
 ```php
-class OrdersUserDataProvider implements UserDataProviderInterface
+class OrdersUserDataProvider implements \Crm\ApplicationModule\User\UserDataProviderInterface
 {
     // ...
     public function protect($userId): array
@@ -977,7 +982,7 @@ class OrdersUserDataProvider implements UserDataProviderInterface
             $exclude[] = $order->billing_address_id;
         }
 
-        return [AddressesUserDataProvider::identifier() => array_unique(array_filter($exclude), SORT_NUMERIC)];
+        return [\Crm\UsersModule\User\AddressesUserDataProvider::identifier() => array_unique(array_filter($exclude), SORT_NUMERIC)];
     }
     // ...
 }
@@ -986,7 +991,7 @@ class OrdersUserDataProvider implements UserDataProviderInterface
 The `protect` method returns IDs of protected instances and targets this information to the *UserDataProvider* responsible for possible deletion of those instances. The implementation implies the dependency between the protector and protectee. In this example the *UserDataProvider* of `ProductsModule` (our internal module) protects addresses related to the orders for future claim possibilities.
 
 ```php
-class SubscriptionsUserDataProvider implements UserDataProviderInterface
+class SubscriptionsUserDataProvider implements \Crm\ApplicationModule\User\UserDataProviderInterface
 {
     // ...
     public function canBeDeleted($userId): array
@@ -1005,7 +1010,7 @@ class SubscriptionsUserDataProvider implements UserDataProviderInterface
 The `canBeDeleted` returns information whether the user can be deleted or not. There might be cases, where it's not possible (e.g. due to active subscription) and manual intervention is needed before the deletion of user can happen. This method returns such flag also with information "why" the user cannot be yet deleted. In this case, his last active subscription ended within the last three months.
 
 ```php
-class AddressChangeRequestsUserDataProvider implements UserDataProviderInterface
+class AddressChangeRequestsUserDataProvider implements \Crm\ApplicationModule\User\UserDataProviderInterface
 {
     // ...
     public function delete($userId, $protectedData = [])
@@ -1028,7 +1033,7 @@ To register your own criteria implementation to application, call:
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerSegmentCriteria(CriteriaStorage $criteriaStorage)
+    public function registerSegmentCriteria(\Crm\ApplicationModule\Criteria\CriteriaStorage $criteriaStorage)
     {
         $criteriaStorage->register(
             'users',
@@ -1045,19 +1050,19 @@ When registering the criteria, you have to provide target table on which you do 
 The implementation class should implement `Crm\ApplicationModule\Criteria\CriteriaInterface`. The methods are documented within the interface, but we include the brief description of the most important methods also here based on a Criteria implementation we use:
 
 ```php
-class ActiveSubscriptionCriteria implements CriteriaInterface
+class ActiveSubscriptionCriteria implements \Crm\ApplicationModule\Criteria\CriteriaInterface
 {
     // ...
     public function params(): array
     {
         return [
-            new DateTimeParam(
+            new \Crm\SegmentModule\Params\DateTimeParam(
                 "active_at",
                 "Active at", 
                 "Filter only subscriptions active within selected period", 
                 false
             ),
-            new StringArrayParam(
+            new \Crm\SegmentModule\Params\StringArrayParam(
                 "contains",
                 "Content types", 
                 "Users who have access to selected content types", 
@@ -1066,7 +1071,7 @@ class ActiveSubscriptionCriteria implements CriteriaInterface
                 null, 
                 $this->contentAccessRepository->all()->fetchPairs(null, 'name')
             ),
-            new StringArrayParam(
+            new \Crm\SegmentModule\Params\StringArrayParam(
                 "type", 
                 "Types of subscription", 
                 "Users who have access to selected types of subscription", 
@@ -1075,7 +1080,7 @@ class ActiveSubscriptionCriteria implements CriteriaInterface
                 null, 
                 array_keys($this->subscriptionsRepository->availableTypes())
             ),
-            new NumberArrayParam(
+            new \Crm\SegmentModule\Params\NumberArrayParam(
                 "subscription_type", 
                 "Subscription types", 
                 "Users who have access to selected subscription types", 
@@ -1084,23 +1089,24 @@ class ActiveSubscriptionCriteria implements CriteriaInterface
                 null, 
                 $this->subscriptionTypesRepository->all()->fetchPairs("id", "name")
             ),
-            new BooleanParam(
+            new \Crm\SegmentModule\Params\BooleanParam(
                 "is_recurrent", 
                 "Recurrent subscriptions", 
                 "Users who had at least one recurrent subscription"
             ),
         ];
     }
+    // ...
 }
 ```
 
 The `params` method defined list of available parameters for `ActiveSubscriptionCriteria` - parametrized condition based on a subset of users having active subscription. The parameters can further descibe "when" the user had an active subscription, filter only users with access to specific content type, with specific type of subscription or with recurrent payment.
 
 ```php
-class ActiveSubscriptionCriteria implements CriteriaInterface
+class ActiveSubscriptionCriteria implements \Crm\ApplicationModule\Criteria\CriteriaInterface
 {
     // ...
-    public function join(ParamsBag $params): string
+    public function join(\Crm\SegmentModule\Params\ParamsBag $params): string
     {
         $where = [];
 
@@ -1127,13 +1133,14 @@ class ActiveSubscriptionCriteria implements CriteriaInterface
             $where[] = " subscriptions.is_recurrent = {$params->boolean('is_recurrent')->number()} ";
         }
 
-        return "SELECT DISTINCT(subscriptions.user_id) AS id, " . Fields::formatSql($this->fields()) . "
+        return "SELECT DISTINCT(subscriptions.user_id) AS id, " . \Crm\SegmentModule\Criteria\Fields::formatSql($this->fields()) . "
           FROM subscriptions
           INNER JOIN subscription_types ON subscription_types.id = subscriptions.subscription_type_id
           INNER JOIN subscription_type_content_access ON subscription_type_content_access.subscription_type_id = subscription_types.id
           INNER JOIN content_access ON content_access.id = subscription_type_content_access.content_access_id
           WHERE " . implode(" AND ", $where);
     }
+    // ...
 }
 ```
 
@@ -1157,10 +1164,11 @@ Each module can register its own routes that would be matched before the default
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerRoutes(RouteList $router)
+    public function registerRoutes(\Nette\Application\Routers\RouteList $router)
     {
-        $router[] = new Route('sign/in/', 'Users:Sign:in');
+        $router[] = new \Nette\Application\Routers\Route('sign/in/', 'Users:Sign:in');
     }
+    // ...
 }
 ```
 
@@ -1174,12 +1182,13 @@ It has registered `sign/in/` route to be forwarded to `UsersModule` / `SignPrese
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function cache(OutputInterface $output, array $tags = [])
+    public function cache(\Symfony\Component\Console\Output\OutputInterface $output, array $tags = [])
     {
         $output->writeln("<info>Refreshing user stats cache</info>");
         $repository = $container->getByType(\Crm\UsersModule\Repository\UsersRepository::class);
         $repository->totalCount(true, true);
     }
+    // ...
 }
 ```
 
@@ -1193,10 +1202,11 @@ Modules can register multiple layouts, that are used when rendering the customer
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerLayouts(LayoutManager $layoutManager)
+    public function registerLayouts(\Crm\ApplicationModule\LayoutManager $layoutManager)
     {
         $layoutManager->registerLayout('frontend', realpath(__DIR__ . '/templates/@frontend_layout.latte'));
     }
+    // ...
 }
 ```
 
@@ -1239,7 +1249,8 @@ Each seeder has to be implemented as a separate class implementing `\Crm\Applica
 See the `ConfigsSeeder` of `ApiModule` as an example:
 
 ```php
-public function seed(OutputInterface $output)
+// ...
+public function seed(\Symfony\Component\Console\Output\OutputInterface $output)
 {
     $category = $this->configCategoriesRepository->loadByName('Other');
     if (!$category) {
@@ -1256,7 +1267,7 @@ public function seed(OutputInterface $output)
             ->setName($name)
             ->setDisplayName('API logs')
             ->setDescription('Enable API logs in database')
-            ->setType(ApplicationConfig::TYPE_BOOLEAN)
+            ->setType(\Crm\ApplicationModule\Config\ApplicationConfig::TYPE_BOOLEAN)
             ->setAutoload(true)
             ->setConfigCategory($category)
             ->setSorting(500)
@@ -1267,6 +1278,7 @@ public function seed(OutputInterface $output)
         $output->writeln("  * config item <info>$name</info> exists");
     }
 }
+// ...
 ```
 
 The implementation checks whether the config category already exists or not. If it doesn't, it creates it and retrieves the reference. Afterwards it creates new `enable_api_log` config option that can be used within the application to check whether the API calls should be logged or not - see the usage in `\Crm\ApiModule\Presenters\ApiPresenter`. Every step is written to the `$output` just for the sake of logging and visibility of changes.
@@ -1291,25 +1303,26 @@ Here's the example of registering data provider within your module class:
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerDataProviders(DataProviderManager $dataProviderManager)
+    public function registerDataProviders(\Crm\ApplicationModule\DataProvider\DataProviderManager $dataProviderManager)
     {
         $dataProviderManager->registerDataProvider(
             'subscriptions.dataprovider.ending_subscriptions',
             $this->getInstance(DemoDataProvider::class)
         );
     }
+    // ...
 }
 ```
 
 Here's the example of data provider extension point - the itegration part where the provided data is eventually consumed:
 
 ```php
-public function createComponentGoogleSubscriptionsEndGraph(GoogleLineGraphGroupControlFactoryInterface $factory)
+public function createComponentGoogleSubscriptionsEndGraph(\Crm\ApplicationModule\Components\Graphs\GoogleLineGraphGroupControlFactoryInterface $factory)
 {
     $items = [];
 
     // THE DEFAULT CHART ITEM PROVIDED BY GENERIC MODULE
-    $graphDataItem = new GraphDataItem();
+    $graphDataItem = new \Crm\ApplicationModule\Graphs\GraphDataItem();
     $graphDataItem->setCriteria((new Criteria())
         ->setTableName('subscriptions')
         ->setTimeField('end_time')
@@ -1338,17 +1351,17 @@ Here's the example of implementation of the data provider.
 ```php
 class DemoDataProvider
 {
-    public function provide(array $params): GraphDataItem
+    public function provide(array $params): \Crm\ApplicationModule\Graphs\GraphDataItem
     {
         if (!isset($params['dateFrom'])) {
-            throw new DataProviderException('dateFrom param missing');
+            throw new \Crm\ApplicationModule\DataProvider\DataProviderException('dateFrom param missing');
         }
         if (!isset($params['dateTo'])) {
-            throw new DataProviderException('dateTo param missing');
+            throw new \Crm\ApplicationModule\DataProvider\DataProviderException('dateTo param missing');
         }
 
-        $graphDataItem = new GraphDataItem();
-        $graphDataItem->setCriteria((new Criteria())
+        $graphDataItem = new \Crm\ApplicationModule\Graphs\GraphDataItem();
+        $graphDataItem->setCriteria((new \Crm\ApplicationModule\Graphs\Criteria())
             ->setTableName('subscriptions')
             ->setJoin('LEFT JOIN payments ON payments.subscription_id=subscriptions.id
                         LEFT JOIN recurrent_payments ON payments.id = recurrent_payments.parent_payment_id')
