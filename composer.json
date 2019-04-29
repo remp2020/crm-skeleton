@@ -7,6 +7,26 @@
 	"config": {
 		"sort-packages": true
 	},
+	"repositories": [
+		{
+			"type":"package",
+			"package": {
+				"name": "rootpd/pdfresponse",
+				"version":"0.4.3",
+				"source": {
+					"url": "https://github.com/rootpd/pdfresponse.git",
+					"type": "git",
+					"reference":"4b7e5b33b0ccf045f28867f5bdccd256eb7f2462"
+				},
+				"autoload": {
+					"classmap": [
+						"mPDFExtended.php",
+						"PDFResponse.php"
+					]
+				}
+			}
+		}
+	],
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require": {
@@ -14,6 +34,7 @@
 		"remp/crm-api-module": "~0.2 >=0.2.10",
 		"remp/crm-application-module": "~0.2 >=0.2.10",
 		"remp/crm-dashboard-module": "~0.2 >=0.2.10",
+		"remp/crm-invoices-module": "~0.2 >=0.2.10",
 		"remp/crm-payments-module": "~0.2 >=0.2.10",
 		"remp/crm-salesfunnel-module": "~0.2 >=0.2.10",
 		"remp/crm-segment-module": "~0.2 >=0.2.10",

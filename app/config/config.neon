@@ -24,6 +24,7 @@ extensions:
 	- Crm\SegmentModule\DI\SegmentModuleExtension
 	- Crm\PaymentsModule\DI\PaymentsModuleExtension
 	- Crm\SalesFunnelModule\DI\SalesFunnelModuleExtension
+	- Crm\InvoicesModule\DI\InvoicesModuleExtension
 
 # parameters for extensions
 users:
