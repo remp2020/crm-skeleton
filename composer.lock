@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2db5ba54286411274545798f2c3b5ff4",
+    "content-hash": "a054ae27a5a0ff2704f62b8d528a615c",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -2602,6 +2602,44 @@
             "time": "2019-04-26T11:13:59+00:00"
         },
         {
+            "name": "remp/crm-payments-module",
+            "version": "0.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/remp2020/crm-payments-module.git",
+                "reference": "6ba64fc3560dff65f5a4b7c91a1fd397182ec5de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/6ba64fc3560dff65f5a4b7c91a1fd397182ec5de",
+                "reference": "6ba64fc3560dff65f5a4b7c91a1fd397182ec5de",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "remp/crm-application-module": "~0.2 >=0.2.7",
+                "remp/crm-subscriptions-module": "~0.2 >=0.2.7",
+                "tomaj/bank-mails-parser": "^2.0.0",
+                "tomaj/imap-mail-downloader": "^1.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Crm\\PaymentsModule\\": "src/"
+                },
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CRM Payments Module",
+            "homepage": "https://remp2020.com",
+            "time": "2019-04-28T17:08:52+00:00"
+        },
+        {
             "name": "remp/crm-segment-module",
             "version": "0.2.10",
             "source": {
@@ -3336,6 +3374,47 @@
             "time": "2019-03-30T15:58:42+00:00"
         },
         {
+            "name": "tomaj/bank-mails-parser",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tomaj/bank-mails-parser.git",
+                "reference": "ad3da5a31be18d40574134d15f8c929bedcaae64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tomaj/bank-mails-parser/zipball/ad3da5a31be18d40574134d15f8c929bedcaae64",
+                "reference": "ad3da5a31be18d40574134d15f8c929bedcaae64",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 5.3.7"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": "~4.3",
+                "squizlabs/php_codesniffer": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Tomas Majer",
+                    "homepage": "http://tomaj.sk"
+                }
+            ],
+            "description": "Slovak banks mail parse",
+            "time": "2017-05-16T14:15:43+00:00"
+        },
+        {
             "name": "tomaj/faker",
             "version": "v1.3.2",
             "source": {
@@ -3449,6 +3528,48 @@
                 "workers"
             ],
             "time": "2019-03-08T10:07:27+00:00"
+        },
+        {
+            "name": "tomaj/imap-mail-downloader",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tomaj/imap-mail-downloader.git",
+                "reference": "d37e92fc96430bfd7a4417b3953ca2fe59d13a8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tomaj/imap-mail-downloader/zipball/d37e92fc96430bfd7a4417b3953ca2fe59d13a8e",
+                "reference": "d37e92fc96430bfd7a4417b3953ca2fe59d13a8e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-imap": "*",
+                "php": ">= 5.3.7"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": ">4.2",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tomas Majer",
+                    "homepage": "http://tomaj.sk"
+                }
+            ],
+            "description": "IMAP mail downloader",
+            "time": "2016-11-26T23:03:13+00:00"
         },
         {
             "name": "tomaj/nette-bootstrap-form",

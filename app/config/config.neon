@@ -22,6 +22,7 @@ extensions:
 	users: Crm\UsersModule\DI\UsersModuleExtension
 	- Crm\SubscriptionsModule\DI\SubscriptionsModuleExtension
 	- Crm\SegmentModule\DI\SegmentModuleExtension
+	- Crm\PaymentsModule\DI\PaymentsModuleExtension
 
 # parameters for extensions
 users:
@@ -65,4 +66,3 @@ database:
 		password: @environmentConfig::get('CRM_DB_PASS')
 		options:
 			lazy: yes
-

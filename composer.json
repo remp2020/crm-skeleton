@@ -14,6 +14,7 @@
 		"remp/crm-api-module": "~0.2 >=0.2.10",
 		"remp/crm-application-module": "~0.2 >=0.2.10",
 		"remp/crm-dashboard-module": "~0.2 >=0.2.10",
+		"remp/crm-payments-module": "~0.2 >=0.2.10",
 		"remp/crm-segment-module": "~0.2 >=0.2.10",
 		"remp/crm-subscriptions-module": "~0.2 >=0.2.10",
 		"remp/crm-users-module": "~0.2 >=0.2.10"
