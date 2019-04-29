@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8453ba36d744d44ae7c6224f177a6a7",
+    "content-hash": "2db5ba54286411274545798f2c3b5ff4",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -2428,16 +2428,16 @@
         },
         {
             "name": "remp/crm-admin-module",
-            "version": "0.2.3",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-admin-module.git",
-                "reference": "2c786dbdaa97d13ce5956660eaaed17f0aa64974"
+                "reference": "a1f618773fd3cc2a43d234dae74eb69b513ea7d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/2c786dbdaa97d13ce5956660eaaed17f0aa64974",
-                "reference": "2c786dbdaa97d13ce5956660eaaed17f0aa64974",
+                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/a1f618773fd3cc2a43d234dae74eb69b513ea7d6",
+                "reference": "a1f618773fd3cc2a43d234dae74eb69b513ea7d6",
                 "shasum": ""
             },
             "require": {
@@ -2459,20 +2459,20 @@
             ],
             "description": "CRM Admin Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-02-20T21:29:30+00:00"
+            "time": "2019-04-26T11:13:59+00:00"
         },
         {
             "name": "remp/crm-api-module",
-            "version": "0.2.7",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-api-module.git",
-                "reference": "47dbe453dc3c97ab084103a8bd90feca9ac95857"
+                "reference": "0a379f5ac77ce3ae867a878f8314d0facade774a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-api-module/zipball/47dbe453dc3c97ab084103a8bd90feca9ac95857",
-                "reference": "47dbe453dc3c97ab084103a8bd90feca9ac95857",
+                "url": "https://api.github.com/repos/remp2020/crm-api-module/zipball/0a379f5ac77ce3ae867a878f8314d0facade774a",
+                "reference": "0a379f5ac77ce3ae867a878f8314d0facade774a",
                 "shasum": ""
             },
             "require": {
@@ -2494,20 +2494,20 @@
             ],
             "description": "CRM Api Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-03T07:29:05+00:00"
+            "time": "2019-04-26T11:13:59+00:00"
         },
         {
             "name": "remp/crm-application-module",
-            "version": "0.2.9",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-application-module.git",
-                "reference": "1e9ffd923744a1fac8917eb45345b9dda697b997"
+                "reference": "cdd33720534f5dbce076583db5f862fb2f90f375"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-application-module/zipball/1e9ffd923744a1fac8917eb45345b9dda697b997",
-                "reference": "1e9ffd923744a1fac8917eb45345b9dda697b997",
+                "url": "https://api.github.com/repos/remp2020/crm-application-module/zipball/cdd33720534f5dbce076583db5f862fb2f90f375",
+                "reference": "cdd33720534f5dbce076583db5f862fb2f90f375",
                 "shasum": ""
             },
             "require": {
@@ -2564,20 +2564,20 @@
             ],
             "description": "CRM Application Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-18T12:36:08+00:00"
+            "time": "2019-04-26T11:13:59+00:00"
         },
         {
             "name": "remp/crm-dashboard-module",
-            "version": "0.2.8",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-dashboard-module.git",
-                "reference": "3d0e84ed0435caa406d149f4c2b952e59f90ea22"
+                "reference": "348760db464f585203ceae2a8b9789a7ed4646c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-dashboard-module/zipball/3d0e84ed0435caa406d149f4c2b952e59f90ea22",
-                "reference": "3d0e84ed0435caa406d149f4c2b952e59f90ea22",
+                "url": "https://api.github.com/repos/remp2020/crm-dashboard-module/zipball/348760db464f585203ceae2a8b9789a7ed4646c1",
+                "reference": "348760db464f585203ceae2a8b9789a7ed4646c1",
                 "shasum": ""
             },
             "require": {
@@ -2599,20 +2599,20 @@
             ],
             "description": "CRM Dashboard Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-18T10:40:31+00:00"
+            "time": "2019-04-26T11:13:59+00:00"
         },
         {
             "name": "remp/crm-segment-module",
-            "version": "0.2.8",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-segment-module.git",
-                "reference": "92bb745d7ce142e10557dfab80d80b9e9c5b7e13"
+                "reference": "d5ab84ba1f751f40d732050a8957469476076ee7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/92bb745d7ce142e10557dfab80d80b9e9c5b7e13",
-                "reference": "92bb745d7ce142e10557dfab80d80b9e9c5b7e13",
+                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/d5ab84ba1f751f40d732050a8957469476076ee7",
+                "reference": "d5ab84ba1f751f40d732050a8957469476076ee7",
                 "shasum": ""
             },
             "require": {
@@ -2634,25 +2634,25 @@
             ],
             "description": "CRM Segment Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-18T10:40:31+00:00"
+            "time": "2019-04-26T11:13:59+00:00"
         },
         {
             "name": "remp/crm-subscriptions-module",
-            "version": "0.2.8",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-subscriptions-module.git",
-                "reference": "789bbef9d4577f5aa037c9e8a6a21b5dd75f6229"
+                "reference": "e0dcdce0c786ff4a620bbbd077e9fcc9ed8e341c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/789bbef9d4577f5aa037c9e8a6a21b5dd75f6229",
-                "reference": "789bbef9d4577f5aa037c9e8a6a21b5dd75f6229",
+                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/e0dcdce0c786ff4a620bbbd077e9fcc9ed8e341c",
+                "reference": "e0dcdce0c786ff4a620bbbd077e9fcc9ed8e341c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
-                "remp/crm-application-module": "~0.2"
+                "remp/crm-application-module": "~0.2 >=0.2.7"
             },
             "type": "library",
             "autoload": {
@@ -2669,26 +2669,26 @@
             ],
             "description": "CRM Subscriptions Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-18T10:40:31+00:00"
+            "time": "2019-04-26T11:13:59+00:00"
         },
         {
             "name": "remp/crm-users-module",
-            "version": "0.2.8",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-users-module.git",
-                "reference": "580562b46d34c3061bbfc17e80972fe02033cea8"
+                "reference": "12ea28da696e8b57895a253228b86f1141e0ff48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/580562b46d34c3061bbfc17e80972fe02033cea8",
-                "reference": "580562b46d34c3061bbfc17e80972fe02033cea8",
+                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/12ea28da696e8b57895a253228b86f1141e0ff48",
+                "reference": "12ea28da696e8b57895a253228b86f1141e0ff48",
                 "shasum": ""
             },
             "require": {
                 "mobiledetect/mobiledetectlib": "^2.8",
                 "php": "^7.1",
-                "remp/crm-application-module": "~0.2",
+                "remp/crm-application-module": "~0.2 >=0.2.7",
                 "sinergi/browser-detector": "^6.1"
             },
             "type": "library",
@@ -2706,7 +2706,7 @@
             ],
             "description": "CRM Users Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-18T10:40:31+00:00"
+            "time": "2019-04-26T13:33:24+00:00"
         },
         {
             "name": "robmorgan/phinx",
