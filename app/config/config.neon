@@ -23,6 +23,7 @@ extensions:
 	- Crm\SubscriptionsModule\DI\SubscriptionsModuleExtension
 	- Crm\SegmentModule\DI\SegmentModuleExtension
 	- Crm\PaymentsModule\DI\PaymentsModuleExtension
+	- Crm\SalesFunnelModule\DI\SalesFunnelModuleExtension
 
 # parameters for extensions
 users:

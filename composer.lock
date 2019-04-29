@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a054ae27a5a0ff2704f62b8d528a615c",
+    "content-hash": "213cf0873de67f02999e5faf745069af",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -2636,6 +2636,40 @@
                 "MIT"
             ],
             "description": "CRM Payments Module",
+            "homepage": "https://remp2020.com",
+            "time": "2019-04-28T17:08:52+00:00"
+        },
+        {
+            "name": "remp/crm-salesfunnel-module",
+            "version": "0.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/remp2020/crm-salesfunnel-module.git",
+                "reference": "6e61c77115191d82d36bf88dba1b010c5d06e3d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/remp2020/crm-salesfunnel-module/zipball/6e61c77115191d82d36bf88dba1b010c5d06e3d2",
+                "reference": "6e61c77115191d82d36bf88dba1b010c5d06e3d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Crm\\SalesFunnelModule\\": "src/"
+                },
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CRM SalesFunnel Module",
             "homepage": "https://remp2020.com",
             "time": "2019-04-28T17:08:52+00:00"
         },
