@@ -33,8 +33,10 @@ users:
 
 translation:
 	default: @environmentConfig::get('CRM_LANG')
-	fallback: [en_US, en]
+	fallback: [en_US]
+	whitelist: [en_US, sk_SK, cs_CZ]
 	resolvers:
+		session: on
 		# english system locale (and Accept header) would enforce english language, see Kdyby\Translation\LocaleResolver\AcceptHeaderResolver
 		header: off
 

@@ -3643,16 +3643,16 @@
         },
         {
             "name": "remp/crm-admin-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-admin-module.git",
-                "reference": "a1f618773fd3cc2a43d234dae74eb69b513ea7d6"
+                "reference": "9051a38c212f918a5b4c787d276a4b987016ecf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/a1f618773fd3cc2a43d234dae74eb69b513ea7d6",
-                "reference": "a1f618773fd3cc2a43d234dae74eb69b513ea7d6",
+                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/9051a38c212f918a5b4c787d276a4b987016ecf4",
+                "reference": "9051a38c212f918a5b4c787d276a4b987016ecf4",
                 "shasum": ""
             },
             "require": {
@@ -3674,20 +3674,20 @@
             ],
             "description": "CRM Admin Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T11:13:59+00:00"
+            "time": "2019-05-06T06:32:06+00:00"
         },
         {
             "name": "remp/crm-api-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-api-module.git",
-                "reference": "95ac34b9c9087374bf3ae23d8ab20bc4f2c70735"
+                "reference": "68a0ef8a5c418a62b93baa7c3758f3dc4774b746"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-api-module/zipball/95ac34b9c9087374bf3ae23d8ab20bc4f2c70735",
-                "reference": "95ac34b9c9087374bf3ae23d8ab20bc4f2c70735",
+                "url": "https://api.github.com/repos/remp2020/crm-api-module/zipball/68a0ef8a5c418a62b93baa7c3758f3dc4774b746",
+                "reference": "68a0ef8a5c418a62b93baa7c3758f3dc4774b746",
                 "shasum": ""
             },
             "require": {
@@ -3709,20 +3709,20 @@
             ],
             "description": "CRM Api Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T11:13:59+00:00"
+            "time": "2019-05-02T06:14:23+00:00"
         },
         {
             "name": "remp/crm-application-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-application-module.git",
-                "reference": "9966a2c342000cd4cf1262d3ea88034315084427"
+                "reference": "35282eb40a3d5a4ac76fe2ad69213c570717bd17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-application-module/zipball/9966a2c342000cd4cf1262d3ea88034315084427",
-                "reference": "9966a2c342000cd4cf1262d3ea88034315084427",
+                "url": "https://api.github.com/repos/remp2020/crm-application-module/zipball/35282eb40a3d5a4ac76fe2ad69213c570717bd17",
+                "reference": "35282eb40a3d5a4ac76fe2ad69213c570717bd17",
                 "shasum": ""
             },
             "require": {
@@ -3779,20 +3779,20 @@
             ],
             "description": "CRM Application Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T11:13:59+00:00"
+            "time": "2019-04-26T06:28:01+00:00"
         },
         {
             "name": "remp/crm-dashboard-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-dashboard-module.git",
-                "reference": "5700b11ccf6e545b59c0903069e84b1189c06c56"
+                "reference": "b205ddb7217aa227cb2a3d6ce19f622c40b36983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-dashboard-module/zipball/5700b11ccf6e545b59c0903069e84b1189c06c56",
-                "reference": "5700b11ccf6e545b59c0903069e84b1189c06c56",
+                "url": "https://api.github.com/repos/remp2020/crm-dashboard-module/zipball/b205ddb7217aa227cb2a3d6ce19f622c40b36983",
+                "reference": "b205ddb7217aa227cb2a3d6ce19f622c40b36983",
                 "shasum": ""
             },
             "require": {
@@ -3814,20 +3814,20 @@
             ],
             "description": "CRM Dashboard Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T11:13:59+00:00"
+            "time": "2019-04-26T06:28:01+00:00"
         },
         {
             "name": "remp/crm-invoices-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-invoices-module.git",
-                "reference": "92c1e4ac115da53e237eaecf4391af9d2dca90c1"
+                "reference": "9fa0552ecb51d9d055c1ee52fec07a0e8f869555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-invoices-module/zipball/92c1e4ac115da53e237eaecf4391af9d2dca90c1",
-                "reference": "92c1e4ac115da53e237eaecf4391af9d2dca90c1",
+                "url": "https://api.github.com/repos/remp2020/crm-invoices-module/zipball/9fa0552ecb51d9d055c1ee52fec07a0e8f869555",
+                "reference": "9fa0552ecb51d9d055c1ee52fec07a0e8f869555",
                 "shasum": ""
             },
             "require": {
@@ -3850,20 +3850,20 @@
             ],
             "description": "CRM Invoices Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-28T17:08:52+00:00"
+            "time": "2019-05-08T10:19:34+00:00"
         },
         {
             "name": "remp/crm-payments-module",
-            "version": "0.2.11",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-payments-module.git",
-                "reference": "57c51a630b06434b4cb4b38091ae7892ee5afa24"
+                "reference": "710ae746c3799ed107e09d1814e709845325aac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/57c51a630b06434b4cb4b38091ae7892ee5afa24",
-                "reference": "57c51a630b06434b4cb4b38091ae7892ee5afa24",
+                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/710ae746c3799ed107e09d1814e709845325aac2",
+                "reference": "710ae746c3799ed107e09d1814e709845325aac2",
                 "shasum": ""
             },
             "require": {
@@ -3893,20 +3893,20 @@
             ],
             "description": "CRM Payments Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-30T14:00:47+00:00"
+            "time": "2019-05-13T06:48:55+00:00"
         },
         {
             "name": "remp/crm-salesfunnel-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-salesfunnel-module.git",
-                "reference": "602b4a4f710a486f5f33840dfa424cb26d98c5f0"
+                "reference": "d2e2181473740d17b5156e56ab68d4d09040b148"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-salesfunnel-module/zipball/602b4a4f710a486f5f33840dfa424cb26d98c5f0",
-                "reference": "602b4a4f710a486f5f33840dfa424cb26d98c5f0",
+                "url": "https://api.github.com/repos/remp2020/crm-salesfunnel-module/zipball/d2e2181473740d17b5156e56ab68d4d09040b148",
+                "reference": "d2e2181473740d17b5156e56ab68d4d09040b148",
                 "shasum": ""
             },
             "require": {
@@ -3927,20 +3927,20 @@
             ],
             "description": "CRM SalesFunnel Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-28T17:08:52+00:00"
+            "time": "2019-05-13T09:01:25+00:00"
         },
         {
             "name": "remp/crm-segment-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-segment-module.git",
-                "reference": "ff9ccb82497c09dfbc7719e6cfb2194e5f0c60f0"
+                "reference": "e4c259a451f7559060924afedcbd953b7dd16a63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/ff9ccb82497c09dfbc7719e6cfb2194e5f0c60f0",
-                "reference": "ff9ccb82497c09dfbc7719e6cfb2194e5f0c60f0",
+                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/e4c259a451f7559060924afedcbd953b7dd16a63",
+                "reference": "e4c259a451f7559060924afedcbd953b7dd16a63",
                 "shasum": ""
             },
             "require": {
@@ -3962,20 +3962,20 @@
             ],
             "description": "CRM Segment Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T11:13:59+00:00"
+            "time": "2019-04-29T18:25:18+00:00"
         },
         {
             "name": "remp/crm-subscriptions-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-subscriptions-module.git",
-                "reference": "1350357f6fc82d6c76d0ecf3592e2164a4aa117c"
+                "reference": "eed41565e78eb990116e064a288bb7fb884ebd13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/1350357f6fc82d6c76d0ecf3592e2164a4aa117c",
-                "reference": "1350357f6fc82d6c76d0ecf3592e2164a4aa117c",
+                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/eed41565e78eb990116e064a288bb7fb884ebd13",
+                "reference": "eed41565e78eb990116e064a288bb7fb884ebd13",
                 "shasum": ""
             },
             "require": {
@@ -3997,20 +3997,20 @@
             ],
             "description": "CRM Subscriptions Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T11:13:59+00:00"
+            "time": "2019-05-02T06:25:13+00:00"
         },
         {
             "name": "remp/crm-users-module",
-            "version": "0.2.10",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-users-module.git",
-                "reference": "12ea28da696e8b57895a253228b86f1141e0ff48"
+                "reference": "8d97c4d793cb7286d1a0e57859bc1a4ee58a5077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/12ea28da696e8b57895a253228b86f1141e0ff48",
-                "reference": "12ea28da696e8b57895a253228b86f1141e0ff48",
+                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/8d97c4d793cb7286d1a0e57859bc1a4ee58a5077",
+                "reference": "8d97c4d793cb7286d1a0e57859bc1a4ee58a5077",
                 "shasum": ""
             },
             "require": {
@@ -4034,7 +4034,7 @@
             ],
             "description": "CRM Users Module",
             "homepage": "https://remp2020.com",
-            "time": "2019-04-26T13:33:24+00:00"
+            "time": "2019-05-14T11:28:57+00:00"
         },
         {
             "name": "robmorgan/phinx",
@@ -4322,7 +4322,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -4385,7 +4385,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -4457,16 +4457,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.0.2",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf"
+                "reference": "d3636025e8253c6144358ec0a62773cae588395b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/1aa7ab2429c3d594dd70689604b5cf7421254cdf",
-                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/d3636025e8253c6144358ec0a62773cae588395b",
+                "reference": "d3636025e8253c6144358ec0a62773cae588395b",
                 "shasum": ""
             },
             "require": {
@@ -4474,19 +4474,22 @@
             },
             "require-dev": {
                 "psr/cache": "^1.0",
-                "psr/container": "^1.0"
+                "psr/container": "^1.0",
+                "symfony/polyfill-intl-idn": "^1.10"
             },
             "suggest": {
                 "psr/cache": "When using the Cache contracts",
                 "psr/container": "When using the Service contracts",
                 "symfony/cache-contracts-implementation": "",
+                "symfony/event-dispatcher-implementation": "",
+                "symfony/http-client-contracts-implementation": "",
                 "symfony/service-contracts-implementation": "",
                 "symfony/translation-contracts-implementation": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -4521,11 +4524,11 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-12-05T08:06:11+00:00"
+            "time": "2019-04-27T14:29:50+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -4575,16 +4578,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "6ebbe61f48069033225c9d3fa7eb5ed116d766d6"
+                "reference": "1ea878bd3af18f934dedb8c0de60656a9a31a718"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6ebbe61f48069033225c9d3fa7eb5ed116d766d6",
-                "reference": "6ebbe61f48069033225c9d3fa7eb5ed116d766d6",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1ea878bd3af18f934dedb8c0de60656a9a31a718",
+                "reference": "1ea878bd3af18f934dedb8c0de60656a9a31a718",
                 "shasum": ""
             },
             "require": {
@@ -4625,7 +4628,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-04-17T14:56:00+00:00"
+            "time": "2019-05-01T08:36:31+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -4746,16 +4749,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "46c0dede1f925383d13dc783857be2c41efd0b24"
+                "reference": "181a426dd129cb496f12d7e7555f6d0b37a7615b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/46c0dede1f925383d13dc783857be2c41efd0b24",
-                "reference": "46c0dede1f925383d13dc783857be2c41efd0b24",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/181a426dd129cb496f12d7e7555f6d0b37a7615b",
+                "reference": "181a426dd129cb496f12d7e7555f6d0b37a7615b",
                 "shasum": ""
             },
             "require": {
@@ -4817,11 +4820,11 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-04-10T16:20:36+00:00"
+            "time": "2019-05-01T12:55:36+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -5293,16 +5296,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.9.0",
+            "version": "v2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae"
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
-                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5240e21982885b76629552d83b4ebb6d41ccde6b",
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b",
                 "shasum": ""
             },
             "require": {
@@ -5318,7 +5321,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.9-dev"
+                    "dev-master": "2.10-dev"
                 }
             },
             "autoload": {
@@ -5356,7 +5359,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-04-28T06:57:38+00:00"
+            "time": "2019-05-14T12:03:52+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
