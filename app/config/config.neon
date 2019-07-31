@@ -25,6 +25,9 @@ extensions:
 	- Crm\PaymentsModule\DI\PaymentsModuleExtension
 	- Crm\SalesFunnelModule\DI\SalesFunnelModuleExtension
 	- Crm\InvoicesModule\DI\InvoicesModuleExtension
+	- Crm\IssuesModule\DI\IssuesModuleExtension
+	- Crm\PrintModule\DI\PrintModuleExtension
+	- Crm\ProductsModule\DI\ProductsModuleExtension
 
 # parameters for extensions
 users:
