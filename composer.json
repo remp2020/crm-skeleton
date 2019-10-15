@@ -9,19 +9,28 @@
 	},
 	"minimum-stability": "stable",
 	"prefer-stable": true,
+	"repositories": [
+		{
+			"type": "path",
+			"url": "extensions/*",
+			"options": {
+				"symlink": true
+			}
+		}
+	],
 	"require": {
-		"remp/crm-admin-module": "~0.4 >=0.4.2",
-		"remp/crm-api-module": "~0.4 >=0.4.2",
-		"remp/crm-application-module": "~0.4 >=0.4.2",
-		"remp/crm-dashboard-module": "~0.4 >=0.4.2",
-		"remp/crm-invoices-module": "~0.4 >=0.4.2",
-		"remp/crm-issues-module": "~0.4 >=0.4.2",
-		"remp/crm-payments-module": "~0.4 >=0.4.2",
-		"remp/crm-print-module": "~0.4 >=0.4.2",
-		"remp/crm-products-module": "~0.4 >=0.4.2",
-		"remp/crm-salesfunnel-module": "~0.4 >=0.4.2",
-		"remp/crm-segment-module": "~0.4 >=0.4.2",
-		"remp/crm-subscriptions-module": "~0.4 >=0.4.2",
-		"remp/crm-users-module": "~0.4 >=0.4.2"
+		"remp/crm-admin-module": "~0.6",
+		"remp/crm-api-module": "~0.6",
+		"remp/crm-application-module": "~0.6",
+		"remp/crm-dashboard-module": "~0.6",
+		"remp/crm-invoices-module": "~0.6",
+		"remp/crm-issues-module": "~0.6",
+		"remp/crm-payments-module": "~0.6",
+		"remp/crm-print-module": "~0.6",
+		"remp/crm-products-module": "~0.6",
+		"remp/crm-salesfunnel-module": "~0.6",
+		"remp/crm-segment-module": "~0.6",
+		"remp/crm-subscriptions-module": "~0.6",
+		"remp/crm-users-module": "~0.6"
 	}
 }

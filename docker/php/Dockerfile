@@ -9,7 +9,7 @@ ENV RUN_DEPS git wget vim curl less gnupg unzip pv
 RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-recommends \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath mbstring iconv zip intl imap gd soap
+    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath mbstring iconv zip intl imap gd soap sockets
 
 # XDEBUG
 

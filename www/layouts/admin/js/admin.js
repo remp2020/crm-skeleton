@@ -1,14 +1,36 @@
 $(document).ready(function() {
     $('.autosize').autosize();
 
-    $('select.select2').select2();
+    initSelect2();
 
-    $('a.btn-danger').click(function(e) {
-        e.preventDefault();
+    // handling ajax calls and elements created dynamically
+    $.nette.ext({
+        start: function (xhr, settings) {
+            if (!settings.nette) {
+                return;
+            }
+            var url = settings.url;
+            if (!settings.url) {
+                return;
+            }
 
-        if (confirm('Are you sure?')) {
-            var url = $(this).attr('href');
-            window.location.href = url;
+            var target = $(settings.nette.e.target);
+            if (!target.hasClass('btn-danger') && !target.closest('.btn').hasClass('btn-danger')) {
+                return;
+            }
+
+            if (!confirm('Are you sure (nette.ext)?')) {
+                xhr.preventDefault();
+                return false;
+            }
+        }
+    });
+
+    // handling standard calls on elements rendered on page load
+    $(document).on('click', 'a.btn-danger', function(e) {
+        if (!confirm('Are you sure?')) {
+            e.preventDefault();
+            return false;
         }
     });
 
@@ -47,6 +69,33 @@ $(document).ready(function() {
 
     initAceEditor(false);
 });
+
+function initSelect2() {
+    $('select.select2').each(function () {
+        var config = {
+            templateResult: function(data) {
+                return data.text;
+            },
+            templateSelection: function(data) {
+                return $("<span>" + data.text + "</span>").find('*').remove().end().text().trim();
+            },
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            allowClear: true,
+        };
+
+        var placeholder = $(this).find('option[value=""]').text();
+        if (placeholder.length > 0) {
+            config["placeholder"] = placeholder;
+        }
+        if ($(this).is(':disabled')) {
+            config["disabled"] = true;
+        }
+
+        $(this).select2(config);
+    });
+}
 
 function initAceEditor(createDiv) {
     $('.ace').each(function () {
