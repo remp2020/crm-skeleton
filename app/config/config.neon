@@ -28,6 +28,10 @@ extensions:
 	- Crm\IssuesModule\DI\IssuesModuleExtension
 	- Crm\PrintModule\DI\PrintModuleExtension
 	- Crm\ProductsModule\DI\ProductsModuleExtension
+	- Crm\UpgradesModule\DI\UpgradesModuleExtension
+	- Crm\ScenariosModule\DI\ScenariosModuleExtension
+	- Crm\OnboardingModule\DI\OnboardingModuleExtension
+	- Crm\GiftsModule\DI\GiftsModuleExtension
 
 # parameters for extensions
 users:
