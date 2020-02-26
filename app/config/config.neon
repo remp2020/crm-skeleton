@@ -32,6 +32,7 @@ extensions:
 	- Crm\ScenariosModule\DI\ScenariosModuleExtension
 	- Crm\OnboardingModule\DI\OnboardingModuleExtension
 	- Crm\GiftsModule\DI\GiftsModuleExtension
+	- Crm\StripeModule\DI\StripeModuleExtension
 
 # parameters for extensions
 users:
