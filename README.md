@@ -297,6 +297,39 @@ If the action should be accessible within admin menu, don't forget to [registerA
 
 *to be delivered in the near future*
 
+
+### Module configuration
+
+Module configuration is kept in `app/config/config.neon` and `app/config/config.local.neon` files.
+The second file provides a local configuration (only applied for `local` environment) which overrides global configuration defined in `config.neon`.
+
+`config.neon` contains a configuration of modules loaded by your module and basic configuration values such as as database connection strings.
+In addition, if you want your class to be managed and injected by dependency injection container, you need to specify it in `services` section here. Example:
+
+```
+services:
+    - Crm\DemoModule\ExampleClass
+```
+
+`ExampleClass` will be instantiated as a singleton instance and can injected to other classes by requiring it in their constructor functions (for more details, see [Nette DI documentation](https://doc.nette.org/en/3.0/dependency-injection)).
+ 
+#### Custom repositories 
+
+Here is an example of how to use `config.neon` file to override default implementation of repository file used by UsersModule. 
+UsersModule registers its repository service in `config.neon` file like this:
+``` 
+usersRepository: Crm\UsersModule\Repository\UsersRepository
+```
+
+When a service registration is prefixed with a key (`usersRepository`), you can refer to this key in your configuration file and provide your own implementation of the service. 
+Your repository should extend the original repository (since other services may rely on functions defined there) plus implement your custom functionality. 
+Next step is to re-register your repository with the same key:
+
+``` 
+usersRepository: Crm\DemoModule\MyUsersRepository
+```
+Following this, `MyUsersRepository` will be injected in all services instead of `UsersRepository`.
+ 
 ### Integration with the application
 
 Each of the following subheadings represent method of `ApplicationModuleInterface` that can be extended by your module. Example snippets in this section display the primary usage of the integration points, you're free to explore and use other parameters of the call.
