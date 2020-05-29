@@ -78,37 +78,43 @@ Recommended _(tested)_ versions are:
     chmod -R a+rw temp log
     ```
 
-6. Install composer packages
+6. Install composer packages.
 
     ```
     composer install
     ```
     
-7. Initialize and migrate database
+7. Initialize and migrate database.
 
     ```
     php bin/command.php phinx:migrate
     ```
     
-8. Generate access resources
+8. Generate user access resources to control access rights to features in CRM admin.
 
     ```
     php bin/command.php user:generate_access
     ```
 
-    _(Optional)_ If you plan to use API, generate also API access resources:
+9. Generate API access resources to control access rights of API tokens to specific endpoints.
     
     ```
     php bin/command.php api:generate_access
     ```
         
-9. Seed database with required data
+10. Seed database with required data
 
     ```
     php bin/command.php application:seed
     ```
+        
+11. Copy module's assets to your `www` folder. This is part of [composer.json](./composer.json) and it's handled automatically for you in subsequent updates.
+
+    ```
+    php bin/command.php application:copy_assets
+    ```
   
-10. All done
+12. All done
 
     Access application via web browser. Default configuration:
     
@@ -124,16 +130,9 @@ Recommended _(tested)_ versions are:
 
 ## Available modules
 
-- [Application](https://github.com/remp2020/crm-application-module)
-- [Api](https://github.com/remp2020/crm-api-module)
-- [Admin](https://github.com/remp2020/crm-admin-module)
-- [Users](https://github.com/remp2020/crm-users-module)
-- [Subscriptions](https://github.com/remp2020/crm-subscriptions-module)
-- [Segments](https://github.com/remp2020/crm-segment-module)
+Not all the modules that we open sourced are directly included in this repository. You can [explore other modules](https://github.com/remp2020?q=crm-&type=&language=) and see, whether there are some scratching your itch.
 
-### WIP _(2019)_
-
-- Payments module
+Or you can dive into the docs below and extend the CRM with your own module.
 
 ## Custom module implementation
 
