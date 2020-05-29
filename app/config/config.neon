@@ -11,6 +11,8 @@ parameters:
 	redis:
 		host: @environmentConfig::get('CRM_REDIS_HOST')
 		port: @environmentConfig::get('CRM_REDIS_PORT')
+		password: @environmentConfig::get('CRM_REDIS_PASSWORD')
+		database: @environmentConfig::get('CRM_REDIS_DATABASE')
 
 extensions:
 	local_configs: Crm\ApplicationModule\Config\ConfigExtension

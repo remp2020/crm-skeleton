@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3.15-fpm
 
 ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev
 
@@ -10,6 +10,14 @@ RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-
     && docker-php-ext-configure intl \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath mbstring iconv zip intl imap gd soap sockets
+
+# OPCache
+
+RUN docker-php-ext-install opcache
+
+ADD opcache.ini /tmp/opcache.ini
+
+RUN cat /tmp/opcache.ini >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
 # XDEBUG
 

@@ -19,23 +19,28 @@
 		}
 	],
 	"require": {
-		"remp/crm-admin-module": "~0.10",
-		"remp/crm-api-module": "~0.10",
-		"remp/crm-application-module": "~0.10",
-		"remp/crm-dashboard-module": "~0.10",
-		"remp/crm-gifts-module": "~0.10",
-		"remp/crm-invoices-module": "~0.10",
-		"remp/crm-issues-module": "~0.10",
-		"remp/crm-onboarding-module": "~0.10",
-		"remp/crm-payments-module": "~0.10",
-		"remp/crm-print-module": "~0.10",
-		"remp/crm-products-module": "~0.10",
-		"remp/crm-salesfunnel-module": "~0.10",
-		"remp/crm-scenarios-module": "~0.10",
-		"remp/crm-segment-module": "~0.10",
-		"remp/crm-stripe-module": "^0.10.0",
-		"remp/crm-subscriptions-module": "~0.10",
-		"remp/crm-upgrades-module": "~0.10",
-		"remp/crm-users-module": "~0.10"
+		"remp/crm-admin-module": "~0.13",
+		"remp/crm-api-module": "~0.13",
+		"remp/crm-application-module": "~0.13",
+		"remp/crm-dashboard-module": "~0.13",
+		"remp/crm-gifts-module": "~0.13",
+		"remp/crm-invoices-module": "~0.13",
+		"remp/crm-issues-module": "~0.13",
+		"remp/crm-onboarding-module": "~0.13",
+		"remp/crm-payments-module": "~0.13",
+		"remp/crm-print-module": "~0.13",
+		"remp/crm-products-module": "~0.13",
+		"remp/crm-salesfunnel-module": "~0.13",
+		"remp/crm-scenarios-module": "~0.13",
+		"remp/crm-segment-module": "~0.13",
+		"remp/crm-stripe-module": "^0.13.0",
+		"remp/crm-subscriptions-module": "~0.13",
+		"remp/crm-upgrades-module": "~0.13",
+		"remp/crm-users-module": "~0.13"
+	},
+	"scripts": {
+		"post-autoload-dump": [
+			"Crm\\ApplicationModule\\ComposerScripts::postAutoloadDump"
+		]
 	}
 }
