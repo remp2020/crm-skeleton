@@ -111,7 +111,7 @@ Recommended _(tested)_ versions are:
 11. Copy module's assets to your `www` folder. This is part of [composer.json](./composer.json) and it's handled automatically for you in subsequent updates.
 
     ```
-    php bin/command.php application:copy_assets
+    php bin/command.php application:install_assets
     ```
   
 12. All done
