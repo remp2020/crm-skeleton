@@ -11,5 +11,11 @@ docker-compose.override.yml
 /.vscode
 .history
 
+www/copy_assets_check
+www/layouts/application
+www/layouts/mailer
+www/layouts/admin/scenariobuilder
+www/layouts/admin/segmenter
+
 .DS_Store
 Thumbs.db
