@@ -16,6 +16,7 @@ www/layouts/application
 www/layouts/mailer
 www/layouts/admin/scenariobuilder
 www/layouts/admin/segmenter
+www/layouts/admin/vendors/trumbowyg
 
 .DS_Store
 Thumbs.db
