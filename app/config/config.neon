@@ -57,7 +57,7 @@ security:
 	debugger: true
 
 application:
-	errorPresenter: Error
+	errorPresenter: Application:Error
 	mapping:
 		*: Crm\*Module\Presenters\*Presenter
 	# TODO: we need to scan composer to properly register extensions
