@@ -167,6 +167,30 @@ Your module implementation should be placed within `app/modules` folder. To crea
                 - addModule(Crm\DemoModule\DemoModule())
     ```
 
+#### Presenter mapping  
+
+By default the configuration uses wildcard presenter mapping to ease the learning curve of working with the CRM. You can find this snippet in [config.neon](app/config/config.neon).
+
+```neon
+application:
+	mapping:
+		*: Crm\*Module\Presenters\*Presenter
+```
+
+This configuration means, that all scanned classes mapping the pattern will be used as presenters - even if the module is not enabled. This occasionally creates unwanted side effects.
+
+If you want to have full control over the presenter mapping, for each enabled custom module replace the `mapping` entry with explicit mapping:
+
+```neon
+application:
+	mapping:
+		Demo: Crm\DemoModule\Presenters\*Presenter
+```
+
+_Note: All modules installed as packages are already mapped explicitly._
+
+#### Configuration ready
+
 Your module is now ready and registered within application. You can start extending the application via following extension points or by implementing your own presenters.
 
 ### Implementing presenters
