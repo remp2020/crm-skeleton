@@ -1,6 +1,6 @@
-FROM php:7.3.15-fpm
+FROM php:7.4.14-fpm
 
-ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev
+ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
 
 ENV RUN_DEPS git wget vim curl less gnupg unzip pv
 
@@ -9,7 +9,7 @@ ENV RUN_DEPS git wget vim curl less gnupg unzip pv
 RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-recommends \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath mbstring iconv zip intl imap gd soap sockets
+    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl imap gd soap sockets
 
 # OPCache
 
