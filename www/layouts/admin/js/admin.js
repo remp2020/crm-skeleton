@@ -5,11 +5,10 @@ $(document).ready(function() {
 
     // handling ajax calls and elements created dynamically
     $.nette.ext({
-        start: function (xhr, settings) {
+        before: function (xhr, settings) {
             if (!settings.nette) {
                 return;
             }
-            var url = settings.url;
             if (!settings.url) {
                 return;
             }
@@ -20,7 +19,7 @@ $(document).ready(function() {
             }
 
             if (!confirm('Are you sure (nette.ext)?')) {
-                xhr.preventDefault();
+                settings.nette.e.preventDefault();
                 return false;
             }
         }
@@ -29,6 +28,12 @@ $(document).ready(function() {
     // handling standard calls on elements rendered on page load
     $(document).on('click', 'a.btn-danger', function(e) {
         if (!confirm('Are you sure?')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    $(document).on('click', '[data-confirm]', function(e) {
+        if (!confirm($(this).data('confirm'))) {
             e.preventDefault();
             return false;
         }
@@ -67,7 +72,9 @@ $(document).ready(function() {
 
     $('[data-toggle="tooltip"]').tooltip( { html: true } );
 
+    initHtmlEditor();
     initAceEditor(false);
+    initCodemirror();
 });
 
 function initSelect2() {
@@ -97,6 +104,11 @@ function initSelect2() {
     });
 }
 
+// for selects to have correct width in collapse blocks
+$('.collapse').on('show.bs.collapse', function () {
+    setTimeout(initSelect2, 0)
+})
+
 function initAceEditor(createDiv) {
     $('.ace').each(function () {
         var el_lang = $(this).attr('data-lang');
@@ -117,4 +129,53 @@ function initAceEditor(createDiv) {
             }
         }
     })
+}
+
+function initHtmlEditor() {
+    const selector = '[data-html-editor]';
+    const defaultOptions = {
+        semanticKeepAttributes: true,
+        semantic: false,
+        autogrow: true,
+    }
+    $(selector).each(function(index, element) {
+        var $this = $(element);
+        var options = $($this).data('html-editor');
+        options = $.extend(true, {}, defaultOptions, options);
+        $this.trumbowyg(options);
+    });
+}
+
+function initCodemirror() {
+    const selector = '[data-codeeditor]';
+    $(selector).each(function () {
+        var element = $(this);
+        var mode = element.data('codeeditor');
+        const settings = {
+            'mode': mode,
+            'indentUnit': 4,
+            'indentWithTabs': false,
+            'inputStyle': 'contenteditable',
+            'lineNumbers': true,
+            'lineWrapping': true,
+            'styleActiveLine': true,
+            'continueComments': true,
+            'extraKeys': {
+                'Ctrl-Space': 'autocomplete',
+                'Ctrl-\/': 'toggleComment',
+                'Cmd-\/': 'toggleComment',
+                'Alt-F': 'findPersistent',
+                'Ctrl-F': 'findPersistent',
+                'Cmd-F': 'findPersistent'
+            },
+            'direction': 'ltr',
+            'autoCloseBrackets': true,
+            'autoCloseTags': true,
+            'matchTags': {
+                'bothTags': true
+            },
+        }
+
+        CodeMirror.fromTextArea(element[0], settings);
+    });
 }
