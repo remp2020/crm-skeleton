@@ -113,8 +113,14 @@ Recommended _(tested)_ versions are:
     ```
     php bin/command.php application:install_assets
     ```
-  
-12. All done
+
+12. Initialize random application key (`CRM_KEY` value) in your `.env` file.
+
+    ```
+    php bin/command.php application:generate_key
+    ```
+
+13. All done
 
     Access application via web browser. Default configuration:
     
