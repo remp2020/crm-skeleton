@@ -133,6 +133,7 @@ Recommended _(tested)_ versions are:
             - Username: `user@user.sk`
             - Password: `password`
 
+**IMPORTANT:** Please update steps 7-11 every time you update the CRM - every time you run `composer update`.
 
 ## Available modules
 
@@ -887,11 +888,26 @@ Nette provides you with DI in the constructor to include any dependencies you ne
 
 Remember that you should restart the worker(s) when the code changes, otherwise it would still use the old version of code that's loaded in the memory.
 
-If you use *systemd* or *supervisor* you can configure the tools to start the worker automatically when it stops and trigger the graceful stop of worker by touching `/tmp/hermes_restart` file. If you want to use different path of file to touch, you can override the setting in `config.neon`:
+If you use *systemd* or *supervisor* you can configure the tools to start the worker automatically when it stops and trigger the graceful stop of worker. There are two configuration options:
 
-```neon
-hermesRestart: Tomaj\Hermes\Restart\SharedFileRestart('/var/www/html/tmp/hermes_restart')
-```
+- By writing to Redis (default). Once everything is deployed and ready, write current unix timestamp to the configured Redis instance (DB 0) under the `hermes_shutdown` key. If performed manually, the steps are:
+  
+  ```
+  user@server:~$ redis-cli 
+  redis:6379> TIME
+  1) "1624433747"
+  2) "775575"
+  redis:6379> SET hermes_restart 1624433747
+  OK
+  ```
+  
+  If the worker was started before the provided timestamp, it will shutdown. It is expected that systemd or supervisor will start it back as the latest version.
+  
+- By touching `/tmp/hermes_restart` file. If you want to use different path of file to touch, you can override the setting in `config.neon`:
+
+    ```neon
+    hermesShutdown: Tomaj\Hermes\Restart\SharedFileRestart('/var/www/html/tmp/hermes_restart')
+    ```
 
 #### registerAuthenticators
 
