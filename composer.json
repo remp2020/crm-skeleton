@@ -2,7 +2,7 @@
 	"name": "remp/crm-skeleton",
 	"description": "REMP - CRM Skeleton",
 	"type": "project",
-	"homepage": "https://remp2020.com",
+	"homepage": "https://remp2030.com",
 	"license": "MIT",
 	"config": {
 		"sort-packages": true
