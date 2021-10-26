@@ -14,6 +14,7 @@ docker-compose.override.yml
 www/copy_assets_check
 www/layouts/application
 www/layouts/mailer
+www/layouts/admin/dist/*
 www/layouts/admin/scenariobuilder
 www/layouts/admin/segmenter
 www/layouts/admin/vendors/trumbowyg
