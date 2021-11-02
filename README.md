@@ -11,7 +11,7 @@ To create skeleton application which will be run directly on the host machine, u
    ```
    composer create-project remp/crm-skeleton path/to/install
    ```
-   
+
 If you plan to use our Docker Compose appliance to run application, skip vendor installation as you might not have
 all extensions installed on your host machine.
 
@@ -34,40 +34,40 @@ Recommended _(tested)_ versions are:
 
 #### Steps to install application within docker
 
-1. Prepare environment & configuration files
+1. Prepare environment & configuration files
 
     ```
     cp .env.example .env
     ```
-    
+
     ```
     cp app/config/config.local.example.neon app/config/config.local.neon
     ```
-    
+
     ```
     cp docker-compose.override.example.yml docker-compose.override.yml
     ```
-    
+
     No changes are required if you want to run application as it is.
 
 2. Setup host 
 
     Default host used by application is `http://crm.press`. It should by pointing to localhost (`127.0.0.1`).
-    
+
 3. Start docker-compose
-    
+
     ```
     docker-compose up
     ```
-    
+
     You should see log of starting containers.
-    
+
 4. Enter application docker container
 
     ```
     docker-compose exec crm /bin/bash
     ```
-    
+
     Following commands will be run inside container. 
 
 5. Update permissions for docker application
@@ -83,47 +83,47 @@ Recommended _(tested)_ versions are:
     ```
     composer install
     ```
-    
+
 7. Initialize and migrate database.
 
     ```
     php bin/command.php phinx:migrate
     ```
-    
-8. Generate user access resources to control access rights to features in CRM admin.
 
-    ```
-    php bin/command.php user:generate_access
-    ```
-
-9. Generate API access resources to control access rights of API tokens to specific endpoints.
-    
-    ```
-    php bin/command.php api:generate_access
-    ```
-        
-10. Seed database with required data
-
-    ```
-    php bin/command.php application:seed
-    ```
-        
-11. Copy module's assets to your `www` folder. This is part of [composer.json](./composer.json) and it's handled automatically for you in subsequent updates.
-
-    ```
-    php bin/command.php application:install_assets
-    ```
-
-12. Initialize random application key (`CRM_KEY` value) in your `.env` file.
+8. Initialize random application key (`CRM_KEY` value) in your `.env` file.
 
     ```
     php bin/command.php application:generate_key
     ```
 
+9. Generate user access resources to control access rights to features in CRM admin.
+
+    ```
+    php bin/command.php user:generate_access
+    ```
+
+10. Generate API access resources to control access rights of API tokens to specific endpoints.
+
+    ```
+    php bin/command.php api:generate_access
+    ```
+
+11. Seed database with required data
+
+    ```
+    php bin/command.php application:seed
+    ```
+
+12. Copy module's assets to your `www` folder. This is part of [composer.json](./composer.json) and it's handled automatically for you in subsequent updates.
+
+    ```
+    php bin/command.php application:install_assets
+    ```
+
 13. All done
 
     Access application via web browser. Default configuration:
-    
+
     - URL: http://crm.press/
     - Users:
         - Admin
@@ -153,7 +153,7 @@ Your module implementation should be placed within `app/modules` folder. To crea
 
 * Create folder `app/modules/DemoModule`
 * Create class `Crm\DemoModule\DemoModule` within the created folder with the definition of module, extending `Crm\ApplicationModule\CrmModule`.
-    
+
     ```php
     <?php
 
@@ -164,9 +164,9 @@ Your module implementation should be placed within `app/modules` folder. To crea
         // register your extension points based on the documentation below
     }
     ```
-    
+
 * Register the module definition to be used by application in your `app/config/config.neon` file.
-    
+
     ```neon
     services:
         moduleManager:
@@ -174,7 +174,7 @@ Your module implementation should be placed within `app/modules` folder. To crea
                 - addModule(Crm\DemoModule\DemoModule())
     ```
 
-#### Presenter mapping  
+#### Presenter mapping
 
 By default the configuration uses wildcard presenter mapping to ease the learning curve of working with the CRM. You can find this snippet in [config.neon](app/config/config.neon).
 
@@ -282,8 +282,7 @@ Couple of things happened in the example template:
     ```
 
   * The `content` should include default content of the page. All templates should write into the `#content` block.
-  
-  If you use your own layout, you can utilize these blocks further more, this serves as a simple example to point the direction and to explain that the `#content` block needs to be used in the default setting. You can read more about blocks at [the official documentation page](https://latte.nette.org/en/macros#toc-blocks)
+  * If you use your own layout, you can utilize these blocks further more, this serves as a simple example to point the direction and to explain that the `#content` block needs to be used in the default setting. You can read more about blocks at [the official documentation page](https://latte.nette.org/en/macros#toc-blocks)
 * We used `simpleWidget` component to prepare placeholder for widget from other modules to be included in our template. See section [registerWidgets](#registerWidgets) to read more about widgets.
 * We used latte-specific condition `n:ifset` to render the `div` block only when the `$userId` variable is present. If you're not familiar with Latte, please check the documentation at [latte.nette.org](https://latte.nette.org/en/) and macros that are available.
 
@@ -891,7 +890,7 @@ Remember that you should restart the worker(s) when the code changes, otherwise 
 If you use *systemd* or *supervisor* you can configure the tools to start the worker automatically when it stops and trigger the graceful stop of worker. There are two configuration options:
 
 - By writing to Redis (default). Once everything is deployed and ready, write current unix timestamp to the configured Redis instance (DB 0) under the `hermes_shutdown` key. If performed manually, the steps are:
-  
+
   ```
   user@server:~$ redis-cli 
   redis:6379> TIME
@@ -900,9 +899,9 @@ If you use *systemd* or *supervisor* you can configure the tools to start the wo
   redis:6379> SET hermes_restart 1624433747
   OK
   ```
-  
+
   If the worker was started before the provided timestamp, it will shutdown. It is expected that systemd or supervisor will start it back as the latest version.
-  
+
 - By touching `/tmp/hermes_restart` file. If you want to use different path of file to touch, you can override the setting in `config.neon`:
 
     ```neon
@@ -949,12 +948,12 @@ class FooAuthenticator extends \Crm\ApplicationModule\Authenticator\BaseAuthenti
         if ($this->token === null) {
             return false;
         }
-        
+
         $email = $this->tokenChecker->getEmailFromToken($this->token);
         if (!$email) {
             throw new \Nette\Security\AuthenticationException('invalid token', , \Crm\UsersModule\Auth\UserAuthenticator::IDENTITY_NOT_FOUND);
         }
-        
+
         $user = $this->userManager->loadUserByEmail($email);
         if (!$user) {
             throw new \Nette\Security\AuthenticationException('invalid token', , \Crm\UsersModule\Auth\UserAuthenticator::IDENTITY_NOT_FOUND);
