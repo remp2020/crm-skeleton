@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ruleset name="projekt-n">
+    <description>REMP CRM coding standards</description>
+
+    <!-- ARGUMENTS ############################################## -->
+    <arg name="encoding" value="UTF-8" />
+    <arg name="cache" value=".phpcs.cache" />
+    <!-- do not sniff migrations, assets and Tyzden's migration_scripts -->
+    <arg name="ignore" value="*/migrations/*,*/TyzdenModule/commands/migration_scripts/*,*/assets/*,*/node_modules/*" />
+
+
+    <!-- RULESET ################################################ -->
+    <!-- use PSR2 as base for rules -->
+    <rule ref="PSR2" />
+
+    <!-- enforce 'elseif' instead of 'else if' -->
+    <rule ref="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed">
+        <type>error</type>
+    </rule>
+
+    <!-- we have too long lines, might be fixed in the future -->
+    <rule ref="Generic.Files.LineLength">
+        <severity>0</severity>
+    </rule>
+
+    <!-- do not allow unused imports -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true" />
+        </properties>
+    </rule>
+
+    <!-- enforce alphabetical order of imports -->
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses">
+        <properties>
+            <property name="caseSensitive" value="true" />
+        </properties>
+    </rule>
+</ruleset>

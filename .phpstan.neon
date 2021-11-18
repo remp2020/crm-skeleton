@@ -1,0 +1,15 @@
+includes:
+	- vendor/spaze/phpstan-disallowed-calls/extension.neon
+	- vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
+	- vendor/spaze/phpstan-disallowed-calls/disallowed-execution-calls.neon
+
+parameters:
+	bootstrapFiles: [.phpstan.bootstrap.php]
+
+	ignoreErrors:
+		-
+			message: '#Cannot unset offset \*NEVER\* on array\(\)#'
+			path: 'vendor/remp/crm-payments-module/src/presenters/RetentionAnalysisAdminPresenter.php'
+		-
+			message: '#Calling exec\(\) is forbidden, because reasons#'
+			path: 'vendor/remp/crm-issues-module/src/commands/PdfConverterCommand.php'

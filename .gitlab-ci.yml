@@ -1,0 +1,13 @@
+stages:
+  - test
+
+sniff:
+  stage: test
+  image: remp/php-ci:7.4.25
+  tags:
+    - docker
+    - dennikn
+  script:
+    - php /usr/local/bin/composer update --no-progress
+    - make sniff
+    - make phpstan

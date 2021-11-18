@@ -905,7 +905,7 @@ If you use *systemd* or *supervisor* you can configure the tools to start the wo
 - By touching `/tmp/hermes_restart` file. If you want to use different path of file to touch, you can override the setting in `config.neon`:
 
     ```neon
-    hermesShutdown: Tomaj\Hermes\Restart\SharedFileRestart('/var/www/html/tmp/hermes_restart')
+    hermesShutdown: Tomaj\Hermes\Restart\SharedFileRestart('/var/www/html/tmp/hermes_shutdown')
     ```
 
 #### registerAuthenticators

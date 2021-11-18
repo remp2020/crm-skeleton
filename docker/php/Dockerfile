@@ -1,4 +1,4 @@
-FROM php:7.4.14-fpm
+FROM php:7.4.25-fpm
 
 ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
 
