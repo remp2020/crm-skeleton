@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e17eb05207635a60181884d34e7fca9",
+    "content-hash": "b6cd767a81ce55d24eee255cda36e064",
     "packages": [
         {
             "name": "brick/math",
@@ -836,23 +836,24 @@
         },
         {
             "name": "composer/spdx-licenses",
-            "version": "1.5.5",
+            "version": "1.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "de30328a7af8680efdc03e396aad24befd513200"
+                "reference": "a30d487169d799745ca7280bc90fdfa693536901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/de30328a7af8680efdc03e396aad24befd513200",
-                "reference": "de30328a7af8680efdc03e396aad24befd513200",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/a30d487169d799745ca7280bc90fdfa693536901",
+                "reference": "a30d487169d799745ca7280bc90fdfa693536901",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 7"
+                "phpstan/phpstan": "^0.12.55",
+                "symfony/phpunit-bridge": "^4.2 || ^5"
             },
             "type": "library",
             "extra": {
@@ -895,7 +896,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/spdx-licenses/issues",
-                "source": "https://github.com/composer/spdx-licenses/tree/1.5.5"
+                "source": "https://github.com/composer/spdx-licenses/tree/1.5.6"
             },
             "funding": [
                 {
@@ -911,7 +912,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-03T16:04:16+00:00"
+            "time": "2021-11-18T10:14:14+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -4680,73 +4681,6 @@
             "time": "2018-12-21T02:25:09+00:00"
         },
         {
-            "name": "paragonie/constant_time_encoding",
-            "version": "v2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
-                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7|^8"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6|^7|^8|^9",
-                "vimeo/psalm": "^1|^2|^3|^4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ParagonIE\\ConstantTime\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Steve 'Sc00bz' Thomas",
-                    "email": "steve@tobtu.com",
-                    "homepage": "https://www.tobtu.com",
-                    "role": "Original Developer"
-                }
-            ],
-            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
-            "keywords": [
-                "base16",
-                "base32",
-                "base32_decode",
-                "base32_encode",
-                "base64",
-                "base64_decode",
-                "base64_encode",
-                "bin2hex",
-                "encoding",
-                "hex",
-                "hex2bin",
-                "rfc4648"
-            ],
-            "support": {
-                "email": "info@paragonie.com",
-                "issues": "https://github.com/paragonie/constant_time_encoding/issues",
-                "source": "https://github.com/paragonie/constant_time_encoding"
-            },
-            "time": "2020-12-06T15:14:20+00:00"
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v9.99.100",
             "source": {
@@ -5408,26 +5342,24 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.11",
+            "version": "2.0.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "6e794226a35159eb06f355efe59a0075a16551dd"
+                "reference": "98a6fe587f3481aea319eef7e656d02cfe1675ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/6e794226a35159eb06f355efe59a0075a16551dd",
-                "reference": "6e794226a35159eb06f355efe59a0075a16551dd",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/98a6fe587f3481aea319eef7e656d02cfe1675ec",
+                "reference": "98a6fe587f3481aea319eef7e656d02cfe1675ec",
                 "shasum": ""
             },
             "require": {
-                "paragonie/constant_time_encoding": "^1|^2",
-                "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
-                "php": ">=5.6.1"
+                "php": ">=5.3.3"
             },
             "require-dev": {
                 "phing/phing": "~2.7",
-                "phpunit/phpunit": "^5.7|^6.0|^9.4",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "suggest": {
@@ -5442,7 +5374,7 @@
                     "phpseclib/bootstrap.php"
                 ],
                 "psr-4": {
-                    "phpseclib3\\": "phpseclib/"
+                    "phpseclib\\": "phpseclib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5499,7 +5431,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.11"
+                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.34"
             },
             "funding": [
                 {
@@ -5515,7 +5447,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-27T03:01:46+00:00"
+            "time": "2021-10-27T02:46:30+00:00"
         },
         {
             "name": "predis/predis",
@@ -6219,16 +6151,16 @@
         },
         {
             "name": "remp/crm-admin-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-admin-module.git",
-                "reference": "132b5bd5a5a2ada062176adcb33822284247eb75"
+                "reference": "b99028d295a05188ebb1ce9a2271a73814d5cef5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/132b5bd5a5a2ada062176adcb33822284247eb75",
-                "reference": "132b5bd5a5a2ada062176adcb33822284247eb75",
+                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/b99028d295a05188ebb1ce9a2271a73814d5cef5",
+                "reference": "b99028d295a05188ebb1ce9a2271a73814d5cef5",
                 "shasum": ""
             },
             "require": {
@@ -6251,22 +6183,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-admin-module/issues",
-                "source": "https://github.com/remp2020/crm-admin-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-admin-module/tree/0.36.0"
             },
-            "time": "2021-10-18T10:13:41+00:00"
+            "time": "2021-11-15T10:26:02+00:00"
         },
         {
             "name": "remp/crm-api-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-api-module.git",
-                "reference": "0e0c31b7bd3c018bd4b085da9c847aa29cec809d"
+                "reference": "21d83291f96e1c1a681d65fe610d7fb2abd455d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-api-module/zipball/0e0c31b7bd3c018bd4b085da9c847aa29cec809d",
-                "reference": "0e0c31b7bd3c018bd4b085da9c847aa29cec809d",
+                "url": "https://api.github.com/repos/remp2020/crm-api-module/zipball/21d83291f96e1c1a681d65fe610d7fb2abd455d4",
+                "reference": "21d83291f96e1c1a681d65fe610d7fb2abd455d4",
                 "shasum": ""
             },
             "require": {
@@ -6291,22 +6223,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-api-module/issues",
-                "source": "https://github.com/remp2020/crm-api-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-api-module/tree/0.36.0"
             },
-            "time": "2021-10-18T19:27:28+00:00"
+            "time": "2021-11-15T10:26:02+00:00"
         },
         {
             "name": "remp/crm-application-module",
-            "version": "0.35.1",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-application-module.git",
-                "reference": "be40de3a964dd02a1de6601ab397e476443c4606"
+                "reference": "9e3dc799d6686061bf1ace216658201facc189e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-application-module/zipball/be40de3a964dd02a1de6601ab397e476443c4606",
-                "reference": "be40de3a964dd02a1de6601ab397e476443c4606",
+                "url": "https://api.github.com/repos/remp2020/crm-application-module/zipball/9e3dc799d6686061bf1ace216658201facc189e7",
+                "reference": "9e3dc799d6686061bf1ace216658201facc189e7",
                 "shasum": ""
             },
             "require": {
@@ -6371,13 +6303,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-application-module/issues",
-                "source": "https://github.com/remp2020/crm-application-module/tree/0.35.1"
+                "source": "https://github.com/remp2020/crm-application-module/tree/0.36.0"
             },
-            "time": "2021-10-26T11:31:01+00:00"
+            "time": "2021-10-26T10:58:17+00:00"
         },
         {
             "name": "remp/crm-dashboard-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-dashboard-module.git",
@@ -6409,13 +6341,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-dashboard-module/issues",
-                "source": "https://github.com/remp2020/crm-dashboard-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-dashboard-module/tree/0.36.0"
             },
             "time": "2021-10-18T10:13:41+00:00"
         },
         {
             "name": "remp/crm-gifts-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-gifts-module.git",
@@ -6447,13 +6379,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-gifts-module/issues",
-                "source": "https://github.com/remp2020/crm-gifts-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-gifts-module/tree/0.36.0"
             },
             "time": "2021-10-18T10:13:41+00:00"
         },
         {
             "name": "remp/crm-invoices-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-invoices-module.git",
@@ -6487,13 +6419,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-invoices-module/issues",
-                "source": "https://github.com/remp2020/crm-invoices-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-invoices-module/tree/0.36.0"
             },
             "time": "2021-10-18T10:13:41+00:00"
         },
         {
             "name": "remp/crm-issues-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-issues-module.git",
@@ -6525,13 +6457,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-issues-module/issues",
-                "source": "https://github.com/remp2020/crm-issues-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-issues-module/tree/0.36.0"
             },
             "time": "2021-10-18T10:13:41+00:00"
         },
         {
             "name": "remp/crm-onboarding-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-onboarding-module.git",
@@ -6563,22 +6495,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-onboarding-module/issues",
-                "source": "https://github.com/remp2020/crm-onboarding-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-onboarding-module/tree/0.36.0"
             },
             "time": "2021-10-18T10:13:41+00:00"
         },
         {
             "name": "remp/crm-payments-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-payments-module.git",
-                "reference": "8275e751df03553c89b6fb6ef07aac8a882f597c"
+                "reference": "075af6d13ba7daa2867c751012be014c6be9e5ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/8275e751df03553c89b6fb6ef07aac8a882f597c",
-                "reference": "8275e751df03553c89b6fb6ef07aac8a882f597c",
+                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/075af6d13ba7daa2867c751012be014c6be9e5ee",
+                "reference": "075af6d13ba7daa2867c751012be014c6be9e5ee",
                 "shasum": ""
             },
             "require": {
@@ -6587,6 +6519,7 @@
                 "php-http/curl-client": "^1.7",
                 "rootpd/omnipay-csob": "^3.0",
                 "rootpd/omnipay-paypal-reference": "^3.0",
+                "singpolyma/openpgp-php": "~0.5",
                 "tomaj/bank-mails-parser": "^2.6",
                 "tomaj/imap-mail-downloader": "^1.2.0",
                 "tomaj/omnipay-tatra": "4.1.2"
@@ -6608,13 +6541,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-payments-module/issues",
-                "source": "https://github.com/remp2020/crm-payments-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-payments-module/tree/0.36.0"
             },
-            "time": "2021-10-25T11:39:28+00:00"
+            "time": "2021-11-18T09:33:05+00:00"
         },
         {
             "name": "remp/crm-print-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-print-module.git",
@@ -6646,22 +6579,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-print-module/issues",
-                "source": "https://github.com/remp2020/crm-print-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-print-module/tree/0.36.0"
             },
             "time": "2021-10-18T10:13:41+00:00"
         },
         {
             "name": "remp/crm-products-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-products-module.git",
-                "reference": "e4c8d7824ad6569cff1fdd0c2d457fb9b2d5e80d"
+                "reference": "dcee87ba86e512bf5d1edfa28cc8cb62ccc9ee2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-products-module/zipball/e4c8d7824ad6569cff1fdd0c2d457fb9b2d5e80d",
-                "reference": "e4c8d7824ad6569cff1fdd0c2d457fb9b2d5e80d",
+                "url": "https://api.github.com/repos/remp2020/crm-products-module/zipball/dcee87ba86e512bf5d1edfa28cc8cb62ccc9ee2b",
+                "reference": "dcee87ba86e512bf5d1edfa28cc8cb62ccc9ee2b",
                 "shasum": ""
             },
             "require": {
@@ -6684,22 +6617,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-products-module/issues",
-                "source": "https://github.com/remp2020/crm-products-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-products-module/tree/0.36.0"
             },
-            "time": "2021-10-22T13:08:37+00:00"
+            "time": "2021-11-18T13:24:58+00:00"
         },
         {
             "name": "remp/crm-remp-mailer-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-remp-mailer-module.git",
-                "reference": "6d9f95ed2ded5ead8f5a21004b4bfdba8109d4e7"
+                "reference": "0025b075d0fd0019c3f6b60731bb2003a2bd524d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-remp-mailer-module/zipball/6d9f95ed2ded5ead8f5a21004b4bfdba8109d4e7",
-                "reference": "6d9f95ed2ded5ead8f5a21004b4bfdba8109d4e7",
+                "url": "https://api.github.com/repos/remp2020/crm-remp-mailer-module/zipball/0025b075d0fd0019c3f6b60731bb2003a2bd524d",
+                "reference": "0025b075d0fd0019c3f6b60731bb2003a2bd524d",
                 "shasum": ""
             },
             "require": {
@@ -6719,22 +6652,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-remp-mailer-module/issues",
-                "source": "https://github.com/remp2020/crm-remp-mailer-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-remp-mailer-module/tree/0.36.0"
             },
-            "time": "2021-10-22T11:12:03+00:00"
+            "time": "2021-11-12T09:17:08+00:00"
         },
         {
             "name": "remp/crm-salesfunnel-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-salesfunnel-module.git",
-                "reference": "efd2eef97da458643efab420614ec3f85e38b317"
+                "reference": "9315c7b423b4a1237e415ae752ce19b2668714a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-salesfunnel-module/zipball/efd2eef97da458643efab420614ec3f85e38b317",
-                "reference": "efd2eef97da458643efab420614ec3f85e38b317",
+                "url": "https://api.github.com/repos/remp2020/crm-salesfunnel-module/zipball/9315c7b423b4a1237e415ae752ce19b2668714a2",
+                "reference": "9315c7b423b4a1237e415ae752ce19b2668714a2",
                 "shasum": ""
             },
             "require": {
@@ -6758,22 +6691,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-salesfunnel-module/issues",
-                "source": "https://github.com/remp2020/crm-salesfunnel-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-salesfunnel-module/tree/0.36.0"
             },
-            "time": "2021-10-25T11:39:28+00:00"
+            "time": "2021-11-10T13:56:24+00:00"
         },
         {
             "name": "remp/crm-scenarios-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-scenarios-module.git",
-                "reference": "69315a681d3d8edf6f6e60a82881f11a8083a68b"
+                "reference": "09877f4d81f822414659f1f3927c6eba8ea81747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-scenarios-module/zipball/69315a681d3d8edf6f6e60a82881f11a8083a68b",
-                "reference": "69315a681d3d8edf6f6e60a82881f11a8083a68b",
+                "url": "https://api.github.com/repos/remp2020/crm-scenarios-module/zipball/09877f4d81f822414659f1f3927c6eba8ea81747",
+                "reference": "09877f4d81f822414659f1f3927c6eba8ea81747",
                 "shasum": ""
             },
             "require": {
@@ -6796,22 +6729,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-scenarios-module/issues",
-                "source": "https://github.com/remp2020/crm-scenarios-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-scenarios-module/tree/0.36.0"
             },
-            "time": "2021-10-25T11:39:28+00:00"
+            "time": "2021-11-18T07:36:00+00:00"
         },
         {
             "name": "remp/crm-segment-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-segment-module.git",
-                "reference": "113b28475b1c4e7b778a1aa64dbf4ec69dfc92d2"
+                "reference": "85f1d3c762f257e5383d7afe990dcd1d247fc3a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/113b28475b1c4e7b778a1aa64dbf4ec69dfc92d2",
-                "reference": "113b28475b1c4e7b778a1aa64dbf4ec69dfc92d2",
+                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/85f1d3c762f257e5383d7afe990dcd1d247fc3a0",
+                "reference": "85f1d3c762f257e5383d7afe990dcd1d247fc3a0",
                 "shasum": ""
             },
             "require": {
@@ -6834,22 +6767,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-segment-module/issues",
-                "source": "https://github.com/remp2020/crm-segment-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-segment-module/tree/0.36.0"
             },
-            "time": "2021-10-25T11:39:28+00:00"
+            "time": "2021-11-16T18:15:13+00:00"
         },
         {
             "name": "remp/crm-stripe-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-stripe-module.git",
-                "reference": "f8e9bf46f9712081c56d5543622ad0452c496630"
+                "reference": "9e2d8a7244456e24f4db3f24028b5bfd969bf45c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-stripe-module/zipball/f8e9bf46f9712081c56d5543622ad0452c496630",
-                "reference": "f8e9bf46f9712081c56d5543622ad0452c496630",
+                "url": "https://api.github.com/repos/remp2020/crm-stripe-module/zipball/9e2d8a7244456e24f4db3f24028b5bfd969bf45c",
+                "reference": "9e2d8a7244456e24f4db3f24028b5bfd969bf45c",
                 "shasum": ""
             },
             "require": {
@@ -6873,22 +6806,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-stripe-module/issues",
-                "source": "https://github.com/remp2020/crm-stripe-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-stripe-module/tree/0.36.0"
             },
-            "time": "2021-10-18T10:13:41+00:00"
+            "time": "2021-11-18T10:51:39+00:00"
         },
         {
             "name": "remp/crm-subscriptions-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-subscriptions-module.git",
-                "reference": "d87cf7c29f44eec4ccdc2fee24028a700c19e4ca"
+                "reference": "3b5f659e3d3d60f31e9fcb17d49f69fb77f0c823"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/d87cf7c29f44eec4ccdc2fee24028a700c19e4ca",
-                "reference": "d87cf7c29f44eec4ccdc2fee24028a700c19e4ca",
+                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/3b5f659e3d3d60f31e9fcb17d49f69fb77f0c823",
+                "reference": "3b5f659e3d3d60f31e9fcb17d49f69fb77f0c823",
                 "shasum": ""
             },
             "require": {
@@ -6911,13 +6844,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-subscriptions-module/issues",
-                "source": "https://github.com/remp2020/crm-subscriptions-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-subscriptions-module/tree/0.36.0"
             },
-            "time": "2021-10-18T10:13:41+00:00"
+            "time": "2021-11-02T15:42:53+00:00"
         },
         {
             "name": "remp/crm-upgrades-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-upgrades-module.git",
@@ -6949,22 +6882,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-upgrades-module/issues",
-                "source": "https://github.com/remp2020/crm-upgrades-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-upgrades-module/tree/0.36.0"
             },
             "time": "2021-10-22T11:12:03+00:00"
         },
         {
             "name": "remp/crm-users-module",
-            "version": "0.35.0",
+            "version": "0.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-users-module.git",
-                "reference": "ae9aa7eda5a5cdc65d6177f8a6470f3c37af6764"
+                "reference": "f1c26eca644e62ca9a9e901cc570b7c27279f143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/ae9aa7eda5a5cdc65d6177f8a6470f3c37af6764",
-                "reference": "ae9aa7eda5a5cdc65d6177f8a6470f3c37af6764",
+                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/f1c26eca644e62ca9a9e901cc570b7c27279f143",
+                "reference": "f1c26eca644e62ca9a9e901cc570b7c27279f143",
                 "shasum": ""
             },
             "require": {
@@ -6991,9 +6924,9 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-users-module/issues",
-                "source": "https://github.com/remp2020/crm-users-module/tree/0.35.0"
+                "source": "https://github.com/remp2020/crm-users-module/tree/0.36.0"
             },
-            "time": "2021-10-22T11:12:03+00:00"
+            "time": "2021-11-18T10:19:10+00:00"
         },
         {
             "name": "riimu/kit-phpencoder",
@@ -7473,6 +7406,71 @@
                 "source": "https://github.com/sinergi/php-browser-detector/tree/6.1.4"
             },
             "time": "2021-09-23T13:51:44+00:00"
+        },
+        {
+            "name": "singpolyma/openpgp-php",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/singpolyma/openpgp-php.git",
+                "reference": "69292f6a46ed7f687083bfb8974b161a41ab213c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/singpolyma/openpgp-php/zipball/69292f6a46ed7f687083bfb8974b161a41ab213c",
+                "reference": "69292f6a46ed7f687083bfb8974b161a41ab213c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0 || ^8.0",
+                "phpseclib/phpseclib": "^2.0 !=2.0.8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "suggest": {
+                "ext-mcrypt": "required if you use encryption cast5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Unlicense"
+            ],
+            "authors": [
+                {
+                    "name": "Arto Bendiken",
+                    "email": "arto.bendiken@gmail.com"
+                },
+                {
+                    "name": "Stephen Paul Weber",
+                    "email": "singpolyma@singpolyma.net"
+                }
+            ],
+            "description": "Pure-PHP implementation of the OpenPGP Message Format (RFC 4880)",
+            "support": {
+                "issues": "https://github.com/singpolyma/openpgp-php/issues",
+                "source": "https://github.com/singpolyma/openpgp-php/tree/0.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/singpolyma",
+                    "type": "github"
+                },
+                {
+                    "url": "https://liberapay.com/singpolyma",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://www.patreon.com/singpolyma",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-05-26T00:35:20+00:00"
         },
         {
             "name": "spatie/array-to-xml",
