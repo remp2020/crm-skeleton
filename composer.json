@@ -19,6 +19,7 @@
 		}
 	],
 	"require": {
+		"php": "^7.4",
 		"remp/crm-admin-module": "^0.36",
 		"remp/crm-api-module": "^0.36",
 		"remp/crm-application-module": "^0.36",
