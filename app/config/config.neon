@@ -52,6 +52,7 @@ translation:
 
 php:
 	date.timezone: Europe/Bratislava
+	intl.error_level: 2 # E_WARNING
 
 security:
 	debugger: true
