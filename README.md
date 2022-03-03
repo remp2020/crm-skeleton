@@ -2,6 +2,10 @@
 
 This is a pre-configured skeleton of CRM application with simple installation.
 
+[![Translation status @ Weblate](https://hosted.weblate.org/widgets/remp-crm/-/svg-badge.svg)](https://hosted.weblate.org/engage/remp-crm/)
+
+CRM is currently available in _sk_SK_, _cs_CZ_, _en_US_ and partially _hu_HU_ locales. If you're interested in translating the open-source modules to your language, you can approach us and contribute via [Weblate](https://hosted.weblate.org/engage/remp-crm/).
+
 ## Installation
 
 ### CRM Skeleton
