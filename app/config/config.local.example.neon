@@ -10,6 +10,11 @@ local_configs:
 	site_title: DEVEL CRM
 	site_description: Development instance of CRM
 
+# override translation settings if needed
+# translation:
+#	default: sk_SK
+#	fallback!: [sk_SK, cs_CZ, en_US]
+
 services:
 	applicationConfig:
 		setup:

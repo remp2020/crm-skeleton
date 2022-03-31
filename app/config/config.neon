@@ -42,8 +42,8 @@ users:
 		default: @environmentConfig::get('CRM_DEFAULT_COUNTRY_ISO')
 
 translation:
-	default: @environmentConfig::get('CRM_LANG')
-	fallback: [en_US]
+	default: en_US
+	fallback: [en_US, sk_SK, cs_CZ]
 	whitelist: [en_US, sk_SK, cs_CZ]
 	resolvers:
 		session: on
