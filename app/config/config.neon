@@ -46,9 +46,9 @@ translation:
 	fallback: [en_US, sk_SK, cs_CZ]
 	whitelist: [en_US, sk_SK, cs_CZ]
 	resolvers:
-		session: on
+		session: no
 		# english system locale (and Accept header) would enforce english language, see Kdyby\Translation\LocaleResolver\AcceptHeaderResolver
-		header: off
+		header: no
 
 php:
 	date.timezone: Europe/Bratislava
@@ -66,7 +66,7 @@ application:
 
 session:
 	expiration: 14 days
-	autoStart: true
+	autoStart: smart
 
 http:
 	frames: yes

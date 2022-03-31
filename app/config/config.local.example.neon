@@ -22,7 +22,7 @@ services:
 
 	# Attaching populators run by command application:populate
 	populator:
-		class: Crm\ApplicationModule\Commands\PopulatorCommand
+		factory: Crm\ApplicationModule\Commands\PopulatorCommand
 		setup:
 			- addSeeder(Crm\ApiModule\Populator\ApiTokensPopulator('ApiTokensPopulator', 5))
 			- addSeeder(Crm\AdminModule\Populator\AuditLogsPopulator('AuditLogsPopulator', 50))
