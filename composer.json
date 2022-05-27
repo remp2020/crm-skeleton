@@ -5,7 +5,10 @@
 	"homepage": "https://remp2030.com",
 	"license": "MIT",
 	"config": {
-		"sort-packages": true
+		"sort-packages": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	},
 	"minimum-stability": "stable",
 	"prefer-stable": true,
