@@ -3,7 +3,7 @@ stages:
 
 sniff:
   stage: test
-  image: remp/php-ci:7.4.25
+  image: remp/php-ci:7.4.29
   tags:
     - docker
     - dennikn
@@ -11,3 +11,4 @@ sniff:
     - php /usr/local/bin/composer update --no-progress
     - make sniff
     - make phpstan
+    - make latte-lint

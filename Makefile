@@ -6,3 +6,8 @@ syntax:
 
 phpstan:
 	php vendor/bin/phpstan analyse --configuration=.phpstan.neon --level=1 --no-progress --memory-limit=1G extensions app vendor/remp
+
+latte-lint:
+	php vendor/bin/latte-lint vendor/remp
+	php vendor/bin/latte-lint app
+	php vendor/bin/latte-lint extensions
