@@ -1237,7 +1237,7 @@ When the implementation is ready, you can check your new Criteria in action at `
 
 CRM by default uses couple of default route patterns provided `Crm\ApplicationModule\Router\RouterFactory`. The very default route - `<module>/<presenter>/<action>[/<id>]` - is matching module/presenter/action in the URL and passing any string provided after the action as an `$id` parameter to action handler.
 
-If no `action` is provided, `default` action is executed (`renderDefault` method of matched presenter), if no `presenter` is provided, `DefaultPresenter` is used. For any other caveats, please see the [Nette framework routing documentation](https://doc.nette.org/en/2.4/routing).
+If no `action` is provided, `default` action is executed (`renderDefault` method of matched presenter), if no `presenter` is provided, `DefaultPresenter` is used. For any other caveats, please see the [Nette framework routing documentation](https://doc.nette.org/en/application/routing).
 
 Each module can register its own routes that would be matched before the default ones. Custom routes can be used for nice URLs of special promotions or just so the most used paths of the system have a URL that's not generated from module/presenter/action combination. See the route defined by `UsersModule`:
 
@@ -1247,7 +1247,8 @@ class DemoModule extends \Crm\ApplicationModule\CrmModule
     // ...
     public function registerRoutes(\Nette\Application\Routers\RouteList $router)
     {
-        $router[] = new \Nette\Application\Routers\Route('sign/in/', 'Users:Sign:in');
+        $router->prepend('/sign/in/', 'Users:Sign:in'); // use "prepend" to have your route resolved early and possibly override our routes
+        $router->addRoute('/promo', 'Foo:Promo:default'); // use "addRoute" to to have your route resolve regularly
     }
     // ...
 }
