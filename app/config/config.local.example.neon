@@ -13,7 +13,7 @@ local_configs:
 # override translation settings if needed
 # translation:
 #	default: sk_SK
-#	fallback: [sk_SK, cs_CZ, en_US]
+#	fallback!: [sk_SK, cs_CZ, en_US]
 
 services:
 	applicationConfig:
