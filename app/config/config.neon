@@ -16,7 +16,7 @@ parameters:
 
 extensions:
 	local_configs: Crm\ApplicationModule\Config\ConfigExtension
-	translation: Kdyby\Translation\DI\TranslationExtension
+	translation: Contributte\Translation\DI\TranslationExtension
 	- Crm\ApplicationModule\DI\ApplicationModuleExtension
 	- Crm\ApiModule\DI\ApiModuleExtension
 	- Crm\AdminModule\DI\AdminModuleExtension
@@ -42,13 +42,17 @@ users:
 		default: @environmentConfig::get('CRM_DEFAULT_COUNTRY_ISO')
 
 translation:
-	default: en_US
-	fallback: [en_US, sk_SK, cs_CZ]
-	whitelist: [en_US, sk_SK, cs_CZ]
-	resolvers:
-		session: no
-		# english system locale (and Accept header) would enforce english language, see Kdyby\Translation\LocaleResolver\AcceptHeaderResolver
-		header: no
+	dirs:
+		- %appDir%/lang
+	locales:
+		default: en_US
+		whitelist: [en_US, sk_SK, cs_CZ]
+	localeResolvers:
+		- Contributte\Translation\LocalesResolvers\Parameter
+		- Contributte\Translation\LocalesResolvers\Router
+	loaders:
+		neon: Contributte\Translation\Loaders\Neon
+		yml: Symfony\Component\Translation\Loader\YamlFileLoader
 
 php:
 	date.timezone: Europe/Bratislava
