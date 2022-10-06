@@ -521,11 +521,11 @@ When registering a widget, you specify a placeholder where the widget will be sh
 class DemoModule extends \Crm\ApplicationModule\CrmModule
 {
     // ...
-    public function registerWidgets(\Crm\ApplicationModule\Widget\WidgetManagerInterface $widgetManager)
+    public function registerLazyWidgets(\Crm\ApplicationModule\Widget\LazyWidgetManagerInterface $widgetManager)
     {
         $widgetManager->registerWidget(
             'admin.users.header',
-            $this->getInstance(\Crm\SubscriptionsModule\Components\MonthSubscriptionsSmallBarGraphWidget::class)
+            \Crm\SubscriptionsModule\Components\MonthSubscriptionsSmallBarGraphWidget::class
         );
     }
     // ...
@@ -550,7 +550,7 @@ Providing a placeholder for widgets is straight-forward. In your `.latte` templa
 Now for the actual implementation of widgets. In it's simplest form, the widget implementation is similar to presenters and actions. The widget's responsibility is to either render the output (usually by using `.latte` template) or decide that there's nothing to display and return nothing. Here's the example implementation of the bare widget:
 
 ```php
-class DemoWidget extends \Crm\ApplicationModule\Widget\BaseWidget
+class DemoWidget extends \Crm\ApplicationModule\Widget\BaseLazyWidget
 {
     private $templateName = 'demo.latte';
 
