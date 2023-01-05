@@ -76,10 +76,10 @@ Recommended _(tested)_ versions are:
 
 5. Update permissions for docker application
 
-    Owner of folders `temp` and `log` is user on host machine. Application needs to have right to write there.
+    Owner of folders `temp`, `log` and `content` is user on host machine. Application needs to have right to write there.
 
     ```
-    chmod -R a+rw temp log
+    chmod -R a+rw temp log content
     ```
 
 6. Install composer packages.

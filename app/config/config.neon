@@ -49,7 +49,17 @@ translation:
 		whitelist: [en_US, sk_SK, cs_CZ]
 	localeResolvers:
 		- Contributte\Translation\LocalesResolvers\Parameter
-		- Contributte\Translation\LocalesResolvers\Router
+
+		# Router translation resolver needs to be disabled by default
+		# in order to migrate the project's database. Router resolver would
+		# try to initialize routes of all of the modules possibly attempting
+		# to read configuration from the database (like products module does).
+		# That would fail because the DB would be empty.
+		#
+		# Feel free to enable this back after the initial run of the command
+		# php bin/command.php phinx:migrate
+
+#		- Contributte\Translation\LocalesResolvers\Router
 	loaders:
 		neon: Contributte\Translation\Loaders\Neon
 		yml: Symfony\Component\Translation\Loader\YamlFileLoader
