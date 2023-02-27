@@ -7,7 +7,8 @@
 	"config": {
 		"sort-packages": true,
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"php-http/discovery": true
 		}
 	},
 	"minimum-stability": "stable",
@@ -23,25 +24,25 @@
 	],
 	"require": {
 		"php": "^8.0",
-		"remp/crm-admin-module": "^2.1",
-		"remp/crm-api-module": "^2.1",
-		"remp/crm-application-module": "^2.1",
-		"remp/crm-dashboard-module": "^2.1",
-		"remp/crm-gifts-module": "^2.1",
-		"remp/crm-invoices-module": "^2.1",
-		"remp/crm-issues-module": "^2.1",
-		"remp/crm-onboarding-module": "^2.1",
-		"remp/crm-payments-module": "^2.1",
-		"remp/crm-print-module": "^2.1",
-		"remp/crm-products-module": "^2.1",
-		"remp/crm-remp-mailer-module": "^2.1",
-		"remp/crm-salesfunnel-module": "^2.1",
-		"remp/crm-scenarios-module": "^2.1",
-		"remp/crm-segment-module": "^2.1",
-		"remp/crm-stripe-module": "^2.1",
-		"remp/crm-subscriptions-module": "^2.1",
-		"remp/crm-upgrades-module": "^2.1",
-		"remp/crm-users-module": "^2.1"
+		"remp/crm-admin-module": "^2.3",
+		"remp/crm-api-module": "^2.3",
+		"remp/crm-application-module": "^2.3",
+		"remp/crm-dashboard-module": "^2.3",
+		"remp/crm-gifts-module": "^2.3",
+		"remp/crm-invoices-module": "^2.3",
+		"remp/crm-issues-module": "^2.3",
+		"remp/crm-onboarding-module": "^2.3",
+		"remp/crm-payments-module": "^2.3",
+		"remp/crm-print-module": "^2.3",
+		"remp/crm-products-module": "^2.3",
+		"remp/crm-remp-mailer-module": "^2.3",
+		"remp/crm-salesfunnel-module": "^2.3",
+		"remp/crm-scenarios-module": "^2.3",
+		"remp/crm-segment-module": "^2.3",
+		"remp/crm-stripe-module": "^2.3",
+		"remp/crm-subscriptions-module": "^2.3",
+		"remp/crm-upgrades-module": "^2.3",
+		"remp/crm-users-module": "^2.3"
 	},
 	"require-dev": {
 		"mockery/mockery": "^1.5.1",
