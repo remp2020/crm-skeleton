@@ -1,0 +1,30 @@
+<?php
+
+namespace Nette\DI;
+
+class ContainerBuilder
+{
+    /**
+     * @phpstan-return \Nette\DI\Definitions\ServiceDefinition
+     */
+    public function getDefinition(string $name): \Nette\DI\Definitions\Definition
+    {
+
+    }
+
+    /**
+     * @phpstan-return \Nette\DI\Definitions\ServiceDefinition[]
+     */
+    public function findByType(string $type): array
+    {
+
+    }
+
+    /**
+     * @phpstan-return \Nette\DI\Definitions\ServiceDefinition
+     */
+    public function getDefinitionByType(string $type): \Nette\DI\Definitions\Definition
+    {
+
+    }
+}

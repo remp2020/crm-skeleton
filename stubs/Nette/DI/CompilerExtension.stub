@@ -1,0 +1,9 @@
+<?php
+
+namespace Nette\DI;
+
+abstract class CompilerExtension
+{
+    /** @phpstan-var \stdClass  */
+    protected $config = [];
+}

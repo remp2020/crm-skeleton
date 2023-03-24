@@ -1,0 +1,10 @@
+<?php
+
+namespace Nette\Application\UI;
+
+/**
+ * @method \Contributte\FormMultiplier\Multiplier addMultiplier(string $name, callable $factory, int $copyNumber = 1, int $maxCopies = null)
+ */
+class Form extends \Nette\Forms\Form
+{
+}

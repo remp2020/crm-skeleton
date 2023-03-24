@@ -1,0 +1,10 @@
+<?php
+
+namespace Nette\Forms;
+
+/**
+ * @phpstan-implements \ArrayAccess<string, \Nette\Forms\Controls\BaseControl|\Nette\Forms\Container>
+ */
+class Container implements \ArrayAccess
+{
+}

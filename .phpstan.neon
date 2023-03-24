@@ -1,13 +1,25 @@
 includes:
-	- vendor/spaze/phpstan-disallowed-calls/extension.neon
 	- vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
 	- vendor/spaze/phpstan-disallowed-calls/disallowed-execution-calls.neon
+	- vendor/spaze/phpstan-disallowed-calls/disallowed-loose-calls.neon
+	- vendor/spaze/phpstan-disallowed-calls/disallowed-insecure-calls.neon
 
 parameters:
-	bootstrapFiles: [.phpstan.bootstrap.php]
-
-	ignoreErrors:
-		-
-			message: '#Calling exec\(\) is forbidden, because reasons#'
-			path: 'vendor/remp/crm-issues-module/src/Commands/PdfConverterCommand.php'
-		- '#in empty\(\) always exists and is not falsy.#'
+	level: 2
+	paths:
+		- app/
+		- extensions/
+		- vendor/remp/
+	bootstrapFiles:
+		- .phpstan.bootstrap.php
+	universalObjectCratesClasses:
+		- stdClass
+		- Nette\Security\IIdentity
+	stubFiles:
+		- stubs/Nette/Forms/Container.stub
+		- stubs/Nette/Forms/Controls/BaseControl.stub
+		- stubs/Nette/DI/ContainerBuilder.stub
+		- stubs/Nette/DI/CompilerExtension.stub
+		- stubs/Nette/DI/Definitions/Definition.stub
+		- stubs/Nette/DI/Definitions/ServiceDefinition.stub
+		- stubs/Nette/Application/UI/Form.stub

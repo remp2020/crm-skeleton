@@ -1,0 +1,8 @@
+<?php
+
+namespace Nette\DI\Definitions;
+
+abstract class Definition
+{
+
+}

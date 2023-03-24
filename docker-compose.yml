@@ -3,6 +3,11 @@ version: "3"
 services:
   nginx:
     image: "nginx:stable"
+    healthcheck:
+      test: [ "CMD-SHELL", "service nginx status || exit 1" ]
+      timeout: 2s
+      retries: 20
+      interval: 2s
     volumes:
       - ".:/var/www/html:rw"
       - "./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
@@ -13,19 +18,34 @@ services:
           - "crm.press"
 
   crm:
-    build: "docker/php"
+    user: "${UID:-1000}:${GID:-1000}"
+    build:
+      context: "docker/php"
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+        UNAME: ${UNAME:-docker}
     extra_hosts:
       - "docker:192.168.99.100"
     volumes:
       - ".:/var/www/html:rw"
     depends_on:
-      - "nginx"
-      - "mysql"
-      - "redis"
+      nginx:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     restart: "unless-stopped"
 
   adminer:
-    build: "docker/php"
+    user: "${UID:-1000}:${GID:-1000}"
+    build:
+      context: "docker/php"
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+        UNAME: ${UNAME:-docker}
     volumes:
       - ".:/var/www/html:rw"
     depends_on:
@@ -43,6 +63,11 @@ services:
       - "--collation-server=utf8mb4_unicode_ci"
       - "--skip-character-set-client-handshake"
       - "--explicit_defaults_for_timestamp"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" , "ping", "-h", "localhost" ]
+      timeout: 2s
+      retries: 20
+      interval: 2s
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
       MYSQL_ROOT_PASSWORD: "secret"
@@ -51,6 +76,11 @@ services:
 
   redis:
     image: "redis:6.2"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      timeout: 2s
+      retries: 20
+      interval: 2s
     volumes:
       - "redis-data:/data"
     restart: "unless-stopped"

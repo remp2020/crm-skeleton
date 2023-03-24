@@ -1,10 +1,24 @@
-FROM php:8.0.20-fpm
+FROM php:8.1.14-fpm
+
+# ADD NON-ROOT USER; IF THE VARIABLES ARE NOT SET, DOCKER COMPOSE DEFAULTS TO 1000:1000 "docker"
+
+ARG UID
+ARG GID
+ARG UNAME
+
+RUN groupadd -g ${GID} -o ${UNAME}
+
+RUN usermod -a -G ${UNAME} www-data
+
+RUN useradd -m -u ${UID} -g ${GID} -o -s /bin/bash ${UNAME}
+
+# INIT
 
 ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
 
 ENV RUN_DEPS git wget vim curl less gnupg unzip pv
 
-# INIT
+# INSTALL DEPENDENCIES
 
 RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-recommends \
     && docker-php-ext-configure intl \
