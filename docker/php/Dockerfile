@@ -49,13 +49,17 @@ ADD log.conf /usr/local/etc/php-fpm.d/zz-log.conf
 
 # COMPOSER
 
+RUN mkdir -p /composer && mkdir -p /composer/bin
+
 ENV COMPOSER_HOME /composer
 
-ENV PATH /composer/vendor/bin:$PATH
+ENV PATH /composer/bin:/composer/vendor/bin:$PATH
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ENV COMPOSER_ALLOW_SUPERUSER 0
 
-RUN mkdir -p /composer/cache && chown -R ${UID}:${GID} /composer/cache
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/composer/bin --filename=composer
+
+RUN chown -R ${UID}:${GID} /composer
 
 # VOLUME
 
