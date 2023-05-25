@@ -63,6 +63,7 @@ services:
       - "--collation-server=utf8mb4_unicode_ci"
       - "--skip-character-set-client-handshake"
       - "--explicit_defaults_for_timestamp"
+      - "--default-authentication-plugin=caching_sha2_password"
     healthcheck:
       test: [ "CMD", "mysqladmin" , "ping", "-h", "localhost" ]
       timeout: 2s
