@@ -11,3 +11,23 @@ latte-lint:
 	php vendor/bin/latte-lint vendor/remp
 	php vendor/bin/latte-lint app
 	php vendor/bin/latte-lint extensions
+
+update-dev:
+	composer update
+	php bin/command.php phinx:migrate
+	php bin/command.php user:generate_access
+	php bin/command.php api:generate_access
+	php bin/command.php application:seed
+	php bin/command.php application:cache
+	php bin/command.php application:install_assets
+	rm -r temp/nette/cache
+
+update-prod:
+	composer install --optimize-autoloader --no-dev
+	php bin/command.php phinx:migrate
+	php bin/command.php user:generate_access
+	php bin/command.php api:generate_access
+	php bin/command.php application:seed
+	php bin/command.php application:cache
+	php bin/command.php application:install_assets
+	rm -r temp/nette/cache
