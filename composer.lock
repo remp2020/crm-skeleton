@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "395cdfbc39fba69c51d71fa697f4716e",
+    "content-hash": "c5b0c433908216b93a5a8974841ce232",
     "packages": [
         {
             "name": "brick/math",
@@ -63,7 +63,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -123,7 +123,7 @@
         },
         {
             "name": "cakephp/database",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
@@ -179,7 +179,7 @@
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -237,7 +237,7 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -438,22 +438,22 @@
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "1e1cb2b791facb2dfe32932a7718cf2571187513"
+                "reference": "953cc4ea32e0c31f2185549c7d216d7921f03da9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/1e1cb2b791facb2dfe32932a7718cf2571187513",
-                "reference": "1e1cb2b791facb2dfe32932a7718cf2571187513",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/953cc4ea32e0c31f2185549c7d216d7921f03da9",
+                "reference": "953cc4ea32e0c31f2185549c7d216d7921f03da9",
                 "shasum": ""
             },
             "require": {
-                "composer/pcre": "^2 || ^3",
+                "composer/pcre": "^2.1 || ^3.1",
                 "php": "^7.2 || ^8.0",
-                "symfony/finder": "^4.4 || ^5.3 || ^6"
+                "symfony/finder": "^4.4 || ^5.3 || ^6 || ^7"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.6",
@@ -491,7 +491,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.0.0"
+                "source": "https://github.com/composer/class-map-generator/tree/1.1.0"
             },
             "funding": [
                 {
@@ -507,7 +507,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-19T11:31:27+00:00"
+            "time": "2023-06-30T13:58:57+00:00"
         },
         {
             "name": "composer/composer",
@@ -1273,16 +1273,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v6.8.0",
+            "version": "v6.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b"
+                "reference": "5dbc8959427416b8ee09a100d7a8588c00fb2e26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/48b0210c51718d682e53210c24d25c5a10a2299b",
-                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/5dbc8959427416b8ee09a100d7a8588c00fb2e26",
+                "reference": "5dbc8959427416b8ee09a100d7a8588c00fb2e26",
                 "shasum": ""
             },
             "require": {
@@ -1330,9 +1330,9 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.8.0"
+                "source": "https://github.com/firebase/php-jwt/tree/v6.8.1"
             },
-            "time": "2023-06-20T16:45:35+00:00"
+            "time": "2023-07-14T18:33:00+00:00"
         },
         {
             "name": "google/apiclient",
@@ -1406,16 +1406,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.306.0",
+            "version": "v0.310.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "eb778b9e1f7a9020d258f4dde7af776fc81ef8d9"
+                "reference": "5088cb76d5ecab675065d2184fa75132396d8648"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/eb778b9e1f7a9020d258f4dde7af776fc81ef8d9",
-                "reference": "eb778b9e1f7a9020d258f4dde7af776fc81ef8d9",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/5088cb76d5ecab675065d2184fa75132396d8648",
+                "reference": "5088cb76d5ecab675065d2184fa75132396d8648",
                 "shasum": ""
             },
             "require": {
@@ -1444,9 +1444,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.306.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.310.0"
             },
-            "time": "2023-06-26T00:52:13+00:00"
+            "time": "2023-07-24T01:02:12+00:00"
         },
         {
             "name": "google/auth",
@@ -4797,16 +4797,16 @@
         },
         {
             "name": "ondrakoupil/tools",
-            "version": "v1.2.4",
+            "version": "v1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ondrakoupil/tools.git",
-                "reference": "d66417e4079cad4ba45784571c9e5724ca35c2b4"
+                "reference": "1b699fadf8184946191943f07eaf217d220287de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ondrakoupil/tools/zipball/d66417e4079cad4ba45784571c9e5724ca35c2b4",
-                "reference": "d66417e4079cad4ba45784571c9e5724ca35c2b4",
+                "url": "https://api.github.com/repos/ondrakoupil/tools/zipball/1b699fadf8184946191943f07eaf217d220287de",
+                "reference": "1b699fadf8184946191943f07eaf217d220287de",
                 "shasum": ""
             },
             "require": {
@@ -4834,9 +4834,9 @@
             "description": "Just a bunch of tools for myself",
             "support": {
                 "issues": "https://github.com/ondrakoupil/tools/issues",
-                "source": "https://github.com/ondrakoupil/tools/tree/v1.2.4"
+                "source": "https://github.com/ondrakoupil/tools/tree/v1.2.5"
             },
-            "time": "2022-11-04T08:52:24+00:00"
+            "time": "2023-07-12T13:34:32+00:00"
         },
         {
             "name": "paquettg/php-html-parser",
@@ -5062,16 +5062,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.19.0",
+            "version": "1.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4"
+                "reference": "57f3de01d32085fea20865f9b16fb0e69347c39e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
-                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/57f3de01d32085fea20865f9b16fb0e69347c39e",
+                "reference": "57f3de01d32085fea20865f9b16fb0e69347c39e",
                 "shasum": ""
             },
             "require": {
@@ -5134,9 +5134,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.19.0"
+                "source": "https://github.com/php-http/discovery/tree/1.19.1"
             },
-            "time": "2023-06-19T08:45:36+00:00"
+            "time": "2023-07-11T07:02:26+00:00"
         },
         {
             "name": "php-http/guzzle7-adapter",
@@ -6456,16 +6456,16 @@
         },
         {
             "name": "remp/crm-admin-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-admin-module.git",
-                "reference": "f67e5bdcd4fc2e60d18683399c9f402ee1a3ac49"
+                "reference": "62ed4bdfcee9b3954cfad2b175fc11aad797c5ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/f67e5bdcd4fc2e60d18683399c9f402ee1a3ac49",
-                "reference": "f67e5bdcd4fc2e60d18683399c9f402ee1a3ac49",
+                "url": "https://api.github.com/repos/remp2020/crm-admin-module/zipball/62ed4bdfcee9b3954cfad2b175fc11aad797c5ba",
+                "reference": "62ed4bdfcee9b3954cfad2b175fc11aad797c5ba",
                 "shasum": ""
             },
             "require": {
@@ -6488,13 +6488,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-admin-module/issues",
-                "source": "https://github.com/remp2020/crm-admin-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-admin-module/tree/2.8.0"
             },
-            "time": "2023-06-26T12:56:24+00:00"
+            "time": "2023-07-11T09:00:05+00:00"
         },
         {
             "name": "remp/crm-api-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-api-module.git",
@@ -6529,13 +6529,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-api-module/issues",
-                "source": "https://github.com/remp2020/crm-api-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-api-module/tree/2.8.0"
             },
             "time": "2023-06-27T07:36:28+00:00"
         },
         {
             "name": "remp/crm-application-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-application-module.git",
@@ -6609,13 +6609,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-application-module/issues",
-                "source": "https://github.com/remp2020/crm-application-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-application-module/tree/2.8.0"
             },
             "time": "2023-06-27T07:36:28+00:00"
         },
         {
             "name": "remp/crm-dashboard-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-dashboard-module.git",
@@ -6647,13 +6647,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-dashboard-module/issues",
-                "source": "https://github.com/remp2020/crm-dashboard-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-dashboard-module/tree/2.8.0"
             },
             "time": "2023-06-16T07:47:16+00:00"
         },
         {
             "name": "remp/crm-gifts-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-gifts-module.git",
@@ -6685,22 +6685,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-gifts-module/issues",
-                "source": "https://github.com/remp2020/crm-gifts-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-gifts-module/tree/2.8.0"
             },
             "time": "2023-06-26T12:56:24+00:00"
         },
         {
             "name": "remp/crm-invoices-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-invoices-module.git",
-                "reference": "c30aea712bfcc5c7704a34ffd4ef30408b771470"
+                "reference": "8079cf1b529f6a3a4a224fb8f3246f9284e000df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-invoices-module/zipball/c30aea712bfcc5c7704a34ffd4ef30408b771470",
-                "reference": "c30aea712bfcc5c7704a34ffd4ef30408b771470",
+                "url": "https://api.github.com/repos/remp2020/crm-invoices-module/zipball/8079cf1b529f6a3a4a224fb8f3246f9284e000df",
+                "reference": "8079cf1b529f6a3a4a224fb8f3246f9284e000df",
                 "shasum": ""
             },
             "require": {
@@ -6725,13 +6725,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-invoices-module/issues",
-                "source": "https://github.com/remp2020/crm-invoices-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-invoices-module/tree/2.8.0"
             },
-            "time": "2023-05-29T13:03:17+00:00"
+            "time": "2023-07-18T08:09:42+00:00"
         },
         {
             "name": "remp/crm-issues-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-issues-module.git",
@@ -6763,13 +6763,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-issues-module/issues",
-                "source": "https://github.com/remp2020/crm-issues-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-issues-module/tree/2.8.0"
             },
             "time": "2023-03-10T08:52:52+00:00"
         },
         {
             "name": "remp/crm-onboarding-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-onboarding-module.git",
@@ -6801,22 +6801,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-onboarding-module/issues",
-                "source": "https://github.com/remp2020/crm-onboarding-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-onboarding-module/tree/2.8.0"
             },
             "time": "2023-03-10T08:52:52+00:00"
         },
         {
             "name": "remp/crm-payments-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-payments-module.git",
-                "reference": "3d5038e86fd24c33cc88e391103337cf3c00a659"
+                "reference": "f07cddd60361638ecad137f6e04597d3b3256d2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/3d5038e86fd24c33cc88e391103337cf3c00a659",
-                "reference": "3d5038e86fd24c33cc88e391103337cf3c00a659",
+                "url": "https://api.github.com/repos/remp2020/crm-payments-module/zipball/f07cddd60361638ecad137f6e04597d3b3256d2d",
+                "reference": "f07cddd60361638ecad137f6e04597d3b3256d2d",
                 "shasum": ""
             },
             "require": {
@@ -6847,13 +6847,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-payments-module/issues",
-                "source": "https://github.com/remp2020/crm-payments-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-payments-module/tree/2.8.0"
             },
-            "time": "2023-06-26T11:59:10+00:00"
+            "time": "2023-07-21T07:16:11+00:00"
         },
         {
             "name": "remp/crm-print-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-print-module.git",
@@ -6885,22 +6885,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-print-module/issues",
-                "source": "https://github.com/remp2020/crm-print-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-print-module/tree/2.8.0"
             },
             "time": "2023-03-23T13:55:29+00:00"
         },
         {
             "name": "remp/crm-products-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-products-module.git",
-                "reference": "11444d36dba983d8eb8b03719405ef9451157838"
+                "reference": "ffa0c679177516627ecc5ba153a7940835a1862a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-products-module/zipball/11444d36dba983d8eb8b03719405ef9451157838",
-                "reference": "11444d36dba983d8eb8b03719405ef9451157838",
+                "url": "https://api.github.com/repos/remp2020/crm-products-module/zipball/ffa0c679177516627ecc5ba153a7940835a1862a",
+                "reference": "ffa0c679177516627ecc5ba153a7940835a1862a",
                 "shasum": ""
             },
             "require": {
@@ -6923,22 +6923,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-products-module/issues",
-                "source": "https://github.com/remp2020/crm-products-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-products-module/tree/2.8.0"
             },
-            "time": "2023-06-16T07:29:03+00:00"
+            "time": "2023-07-12T14:43:38+00:00"
         },
         {
             "name": "remp/crm-remp-mailer-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-remp-mailer-module.git",
-                "reference": "073df555a0722aa7e36042c2213fe7fee62b3c63"
+                "reference": "c698c334f4e84082dd443fe6529acf07e5a5e332"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-remp-mailer-module/zipball/073df555a0722aa7e36042c2213fe7fee62b3c63",
-                "reference": "073df555a0722aa7e36042c2213fe7fee62b3c63",
+                "url": "https://api.github.com/repos/remp2020/crm-remp-mailer-module/zipball/c698c334f4e84082dd443fe6529acf07e5a5e332",
+                "reference": "c698c334f4e84082dd443fe6529acf07e5a5e332",
                 "shasum": ""
             },
             "require": {
@@ -6958,13 +6958,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-remp-mailer-module/issues",
-                "source": "https://github.com/remp2020/crm-remp-mailer-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-remp-mailer-module/tree/2.8.0"
             },
-            "time": "2023-06-22T08:24:44+00:00"
+            "time": "2023-07-24T06:36:30+00:00"
         },
         {
             "name": "remp/crm-salesfunnel-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-salesfunnel-module.git",
@@ -6997,22 +6997,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-salesfunnel-module/issues",
-                "source": "https://github.com/remp2020/crm-salesfunnel-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-salesfunnel-module/tree/2.8.0"
             },
             "time": "2023-05-30T08:21:46+00:00"
         },
         {
             "name": "remp/crm-scenarios-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-scenarios-module.git",
-                "reference": "aad08912b2566cb9af1383c0aeed687bcc2c770c"
+                "reference": "bf4662e4763d9b273255a2ac4b87c77ad779c4e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-scenarios-module/zipball/aad08912b2566cb9af1383c0aeed687bcc2c770c",
-                "reference": "aad08912b2566cb9af1383c0aeed687bcc2c770c",
+                "url": "https://api.github.com/repos/remp2020/crm-scenarios-module/zipball/bf4662e4763d9b273255a2ac4b87c77ad779c4e5",
+                "reference": "bf4662e4763d9b273255a2ac4b87c77ad779c4e5",
                 "shasum": ""
             },
             "require": {
@@ -7035,22 +7035,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-scenarios-module/issues",
-                "source": "https://github.com/remp2020/crm-scenarios-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-scenarios-module/tree/2.8.0"
             },
-            "time": "2023-06-15T11:25:21+00:00"
+            "time": "2023-07-13T08:21:03+00:00"
         },
         {
             "name": "remp/crm-segment-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-segment-module.git",
-                "reference": "66a64ba43efdf7954d0601b0305cc6a08043ca11"
+                "reference": "30b0c582c7d8697de53e7c7d6931ca53fb2294da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/66a64ba43efdf7954d0601b0305cc6a08043ca11",
-                "reference": "66a64ba43efdf7954d0601b0305cc6a08043ca11",
+                "url": "https://api.github.com/repos/remp2020/crm-segment-module/zipball/30b0c582c7d8697de53e7c7d6931ca53fb2294da",
+                "reference": "30b0c582c7d8697de53e7c7d6931ca53fb2294da",
                 "shasum": ""
             },
             "require": {
@@ -7073,13 +7073,13 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-segment-module/issues",
-                "source": "https://github.com/remp2020/crm-segment-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-segment-module/tree/2.8.0"
             },
-            "time": "2023-05-10T12:22:47+00:00"
+            "time": "2023-07-12T13:20:42+00:00"
         },
         {
             "name": "remp/crm-stripe-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-stripe-module.git",
@@ -7112,22 +7112,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-stripe-module/issues",
-                "source": "https://github.com/remp2020/crm-stripe-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-stripe-module/tree/2.8.0"
             },
             "time": "2023-03-10T08:52:52+00:00"
         },
         {
             "name": "remp/crm-subscriptions-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-subscriptions-module.git",
-                "reference": "09515e4937530f6083a5fc9acbae0fe3eb7f3f0b"
+                "reference": "d38a773b76cda521579595f999d87ea3290562bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/09515e4937530f6083a5fc9acbae0fe3eb7f3f0b",
-                "reference": "09515e4937530f6083a5fc9acbae0fe3eb7f3f0b",
+                "url": "https://api.github.com/repos/remp2020/crm-subscriptions-module/zipball/d38a773b76cda521579595f999d87ea3290562bc",
+                "reference": "d38a773b76cda521579595f999d87ea3290562bc",
                 "shasum": ""
             },
             "require": {
@@ -7150,22 +7150,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-subscriptions-module/issues",
-                "source": "https://github.com/remp2020/crm-subscriptions-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-subscriptions-module/tree/2.8.0"
             },
-            "time": "2023-06-16T07:25:49+00:00"
+            "time": "2023-07-21T08:53:21+00:00"
         },
         {
             "name": "remp/crm-upgrades-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-upgrades-module.git",
-                "reference": "47742787a7c68ac6b0ec00de388332db91538d6c"
+                "reference": "6abde78b1174239f7a4e2b4570b95821144163bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-upgrades-module/zipball/47742787a7c68ac6b0ec00de388332db91538d6c",
-                "reference": "47742787a7c68ac6b0ec00de388332db91538d6c",
+                "url": "https://api.github.com/repos/remp2020/crm-upgrades-module/zipball/6abde78b1174239f7a4e2b4570b95821144163bb",
+                "reference": "6abde78b1174239f7a4e2b4570b95821144163bb",
                 "shasum": ""
             },
             "require": {
@@ -7188,22 +7188,22 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-upgrades-module/issues",
-                "source": "https://github.com/remp2020/crm-upgrades-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-upgrades-module/tree/2.8.0"
             },
-            "time": "2023-06-12T05:47:29+00:00"
+            "time": "2023-07-21T13:19:30+00:00"
         },
         {
             "name": "remp/crm-users-module",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/crm-users-module.git",
-                "reference": "a8485d16f70c9db7474fe184ab7ac701158a0d0a"
+                "reference": "adba442a2c994eb6fa5343fdf1cebc82b9061798"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/a8485d16f70c9db7474fe184ab7ac701158a0d0a",
-                "reference": "a8485d16f70c9db7474fe184ab7ac701158a0d0a",
+                "url": "https://api.github.com/repos/remp2020/crm-users-module/zipball/adba442a2c994eb6fa5343fdf1cebc82b9061798",
+                "reference": "adba442a2c994eb6fa5343fdf1cebc82b9061798",
                 "shasum": ""
             },
             "require": {
@@ -7230,9 +7230,9 @@
             "homepage": "https://remp2020.com",
             "support": {
                 "issues": "https://github.com/remp2020/crm-users-module/issues",
-                "source": "https://github.com/remp2020/crm-users-module/tree/2.7.0"
+                "source": "https://github.com/remp2020/crm-users-module/tree/2.8.0"
             },
-            "time": "2023-06-26T14:04:00+00:00"
+            "time": "2023-07-21T10:48:13+00:00"
         },
         {
             "name": "riimu/kit-phpencoder",
@@ -7839,16 +7839,16 @@
         },
         {
             "name": "spatie/array-to-xml",
-            "version": "3.1.6",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/array-to-xml.git",
-                "reference": "e210b98957987c755372465be105d32113f339a4"
+                "reference": "f9ab39c808500c347d5a8b6b13310bd5221e39e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/e210b98957987c755372465be105d32113f339a4",
-                "reference": "e210b98957987c755372465be105d32113f339a4",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/f9ab39c808500c347d5a8b6b13310bd5221e39e7",
+                "reference": "f9ab39c808500c347d5a8b6b13310bd5221e39e7",
                 "shasum": ""
             },
             "require": {
@@ -7886,7 +7886,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/spatie/array-to-xml/tree/3.1.6"
+                "source": "https://github.com/spatie/array-to-xml/tree/3.2.0"
             },
             "funding": [
                 {
@@ -7898,7 +7898,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-11T14:04:07+00:00"
+            "time": "2023-07-19T18:30:26+00:00"
         },
         {
             "name": "stripe/stripe-php",
@@ -10438,37 +10438,33 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.2",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191"
+                "reference": "d1413755e26fe56a63455f7753221c86cbb88f66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/13a7fa2642c76c58fa2806ef7f565344c817a191",
-                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1413755e26fe56a63455f7753221c86cbb88f66",
+                "reference": "d1413755e26fe56a63455f7753221c86cbb88f66",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": "^7.4 || ^8.0"
+                "php": ">=7.4,<8.3"
             },
             "conflict": {
                 "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5 || ^9.3",
-                "psalm/plugin-phpunit": "^0.18",
-                "vimeo/psalm": "^5.9"
+                "psalm/plugin-phpunit": "^0.18.4",
+                "symplify/easy-coding-standard": "^11.5.0",
+                "vimeo/psalm": "^5.13.1"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.6.x-dev"
-                }
-            },
             "autoload": {
                 "files": [
                     "library/helpers.php",
@@ -10486,12 +10482,20 @@
                 {
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
+                    "homepage": "https://github.com/padraic",
+                    "role": "Author"
                 },
                 {
                     "name": "Dave Marshall",
                     "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "http://davedevelopment.co.uk"
+                    "homepage": "https://davedevelopment.co.uk",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Nathanael Esayeas",
+                    "email": "nathanael.esayeas@protonmail.com",
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework",
@@ -10509,10 +10513,13 @@
                 "testing"
             ],
             "support": {
+                "docs": "https://docs.mockery.io/",
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/1.6.2"
+                "rss": "https://github.com/mockery/mockery/releases.atom",
+                "security": "https://github.com/mockery/mockery/security/advisories",
+                "source": "https://github.com/mockery/mockery"
             },
-            "time": "2023-06-07T09:07:52+00:00"
+            "time": "2023-07-19T15:51:02+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -10727,16 +10734,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "ec58baf7b3c7f1c81b3b00617c953249fb8cf30c"
+                "reference": "65c39594fbd8c67abfc68bb323f86447bab79cc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/ec58baf7b3c7f1c81b3b00617c953249fb8cf30c",
-                "reference": "ec58baf7b3c7f1c81b3b00617c953249fb8cf30c",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/65c39594fbd8c67abfc68bb323f86447bab79cc0",
+                "reference": "65c39594fbd8c67abfc68bb323f86447bab79cc0",
                 "shasum": ""
             },
             "require": {
@@ -10768,22 +10775,22 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.22.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.22.1"
             },
-            "time": "2023-06-01T12:35:21+00:00"
+            "time": "2023-06-29T20:46:06+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.21",
+            "version": "1.10.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "b2a30186be2e4d97dce754ae4e65eb0ec2f04eb5"
+                "reference": "5d660cbb7e1b89253a47147ae44044f49832351f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b2a30186be2e4d97dce754ae4e65eb0ec2f04eb5",
-                "reference": "b2a30186be2e4d97dce754ae4e65eb0ec2f04eb5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5d660cbb7e1b89253a47147ae44044f49832351f",
+                "reference": "5d660cbb7e1b89253a47147ae44044f49832351f",
                 "shasum": ""
             },
             "require": {
@@ -10832,7 +10839,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-21T20:07:58+00:00"
+            "time": "2023-07-19T12:44:37+00:00"
         },
         {
             "name": "phpstan/phpstan-mockery",
@@ -11318,16 +11325,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.9",
+            "version": "9.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a9aceaf20a682aeacf28d582654a1670d8826778"
+                "reference": "a6d351645c3fe5a30f5e86be6577d946af65a328"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a9aceaf20a682aeacf28d582654a1670d8826778",
-                "reference": "a9aceaf20a682aeacf28d582654a1670d8826778",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6d351645c3fe5a30f5e86be6577d946af65a328",
+                "reference": "a6d351645c3fe5a30f5e86be6577d946af65a328",
                 "shasum": ""
             },
             "require": {
@@ -11401,7 +11408,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.9"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.10"
             },
             "funding": [
                 {
@@ -11417,7 +11424,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-11T06:13:56+00:00"
+            "time": "2023-07-10T04:04:23+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -12450,16 +12457,16 @@
         },
         {
             "name": "spaze/phpstan-disallowed-calls",
-            "version": "v2.15.0",
+            "version": "v2.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spaze/phpstan-disallowed-calls.git",
-                "reference": "cae3e662df788f5f1e31d00365e89d8479d524b1"
+                "reference": "f80ca038a4052224c562f07d43cfe913113192d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spaze/phpstan-disallowed-calls/zipball/cae3e662df788f5f1e31d00365e89d8479d524b1",
-                "reference": "cae3e662df788f5f1e31d00365e89d8479d524b1",
+                "url": "https://api.github.com/repos/spaze/phpstan-disallowed-calls/zipball/f80ca038a4052224c562f07d43cfe913113192d0",
+                "reference": "f80ca038a4052224c562f07d43cfe913113192d0",
                 "shasum": ""
             },
             "require": {
@@ -12472,7 +12479,7 @@
                 "php-parallel-lint/php-console-highlighter": "^1.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpunit/phpunit": "^8.5 || ^10.1",
-                "spaze/coding-standard": "^1.6",
+                "spaze/coding-standard": "^1.7",
                 "symfony/polyfill-php80": "^1.27"
             },
             "type": "phpstan-extension",
@@ -12505,7 +12512,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spaze/phpstan-disallowed-calls/issues",
-                "source": "https://github.com/spaze/phpstan-disallowed-calls/tree/v2.15.0"
+                "source": "https://github.com/spaze/phpstan-disallowed-calls/tree/v2.15.1"
             },
             "funding": [
                 {
@@ -12513,7 +12520,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-28T18:06:30+00:00"
+            "time": "2023-07-01T21:33:24+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

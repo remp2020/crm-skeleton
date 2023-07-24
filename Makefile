@@ -20,7 +20,6 @@ update-dev:
 	php bin/command.php application:seed
 	php bin/command.php application:cache
 	php bin/command.php application:install_assets
-	rm -r temp/nette/cache
 
 update-prod:
 	composer install --optimize-autoloader --no-dev

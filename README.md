@@ -33,8 +33,8 @@ Simplest posible way is to run this application in docker containers. Docker Com
 
 Recommended _(tested)_ versions are:
 
-- [Docker](https://www.docker.com/products/docker-engine) - 18.06.1-ce, build e68fc7a
-- [Docker Compose](https://docs.docker.com/compose/overview/) - 1.17.1, build 6d101fb
+- [Docker](https://www.docker.com/products/docker-engine) - 24.0.4
+- [Docker Compose](https://docs.docker.com/compose/overview/) - 2.19.1
 
 #### Steps to install application within docker
 
@@ -49,7 +49,7 @@ Recommended _(tested)_ versions are:
     ```
 
     ```
-    cp docker-compose.override.example.yml docker-compose.override.yml
+    cp docker compose.override.example.yml docker compose.override.yml
     ```
 
     No changes are required if you want to run application as it is.
@@ -58,10 +58,10 @@ Recommended _(tested)_ versions are:
 
     Default host used by application is `http://crm.press`. It should by pointing to localhost (`127.0.0.1`).
 
-3. Start docker-compose
+3. Start docker compose
 
     ```
-    docker-compose up
+    docker compose up
     ```
 
     You should see log of starting containers.
@@ -69,7 +69,7 @@ Recommended _(tested)_ versions are:
 4. Enter application docker container
 
     ```
-    docker-compose exec crm /bin/bash
+    docker compose exec crm /bin/bash
     ```
 
     Following commands will be run inside container. 
@@ -131,10 +131,10 @@ Recommended _(tested)_ versions are:
     - URL: http://crm.press/
     - Users:
         - Admin
-            - Username: `admin@admin.sk`
+            - Username: `admin@crm.press`
             - Password: `password`
         - User
-            - Username: `user@user.sk`
+            - Username: `user@crm.press`
             - Password: `password`
 
 **IMPORTANT:** Please update steps 7-11 every time you update the CRM - every time you run `composer update`.
