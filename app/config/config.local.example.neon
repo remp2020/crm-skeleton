@@ -24,9 +24,9 @@ services:
 	populator:
 		factory: Crm\ApplicationModule\Commands\PopulatorCommand
 		setup:
-			- addSeeder(Crm\ApiModule\Populator\ApiTokensPopulator('ApiTokensPopulator', 5))
-			- addSeeder(Crm\AdminModule\Populator\AuditLogsPopulator('AuditLogsPopulator', 50))
-			- addSeeder(Crm\UsersModule\Populator\GroupsPopulator('Groups', 3))
-			- addSeeder(Crm\UsersModule\Populator\UsersPopulator('User', 50))
-			- addSeeder(Crm\UsersModule\Populator\AutologinPopulator('Groups', 200))
-			- addSeeder(Crm\SubscriptionsModule\Populator\SubscriptionsPopulator('Subscriptions', 300))
+			- addSeeder(Crm\ApiModule\Populators\ApiTokensPopulator('ApiTokensPopulator', 5))
+			- addSeeder(Crm\AdminModule\Populators\AuditLogsPopulator('AuditLogsPopulator', 50))
+			- addSeeder(Crm\UsersModule\Populators\GroupsPopulator('Groups', 3))
+			- addSeeder(Crm\UsersModule\Populators\UsersPopulator('User', 50))
+			- addSeeder(Crm\UsersModule\Populators\AutologinPopulator('Groups', 200))
+			- addSeeder(Crm\SubscriptionsModule\Populators\SubscriptionsPopulator('Subscriptions', 300))

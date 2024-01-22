@@ -15,7 +15,7 @@ parameters:
 		database: @environmentConfig::get('CRM_REDIS_DATABASE')
 
 extensions:
-	local_configs: Crm\ApplicationModule\Config\ConfigExtension
+	local_configs: Crm\ApplicationModule\Models\Config\ConfigExtension
 	translation: Contributte\Translation\DI\TranslationExtension
 	- Crm\ApplicationModule\DI\ApplicationModuleExtension
 	- Crm\ApiModule\DI\ApiModuleExtension
