@@ -60,7 +60,7 @@
 	},
 	"scripts": {
 		"post-autoload-dump": [
-			"Crm\\ApplicationModule\\ComposerScripts::postAutoloadDump"
+			"Crm\\ApplicationModule\\Application\\ComposerScripts::postAutoloadDump"
 		]
 	}
 }
