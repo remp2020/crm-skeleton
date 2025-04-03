@@ -1,4 +1,4 @@
-FROM php:8.2.14-fpm
+FROM php:8.3-fpm
 
 # ADD NON-ROOT USER; IF THE VARIABLES ARE NOT SET, DOCKER COMPOSE DEFAULTS TO 1000:1000 "docker"
 
@@ -23,7 +23,7 @@ ENV RUN_DEPS git wget vim curl less gnupg unzip pv
 RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-recommends \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl imap gd soap sockets
+    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl imap gd soap sockets ftp
 
 # OPCache
 
@@ -43,7 +43,13 @@ RUN cat /tmp/xdebug.ini >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # IMAGICK
 
-RUN pecl install imagick && docker-php-ext-enable imagick
+# Imagick is compatible with PHP 8.3 only in master and PECL/tagged version is not available at the moment. Revert
+# to this approach when it works again.
+
+# RUN pecl install imagick && docker-php-ext-enable imagick
+
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN install-php-extensions imagick/imagick@master
 
 ADD log.conf /usr/local/etc/php-fpm.d/zz-log.conf
 
