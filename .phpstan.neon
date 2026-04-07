@@ -16,10 +16,7 @@ parameters:
 		- stdClass
 		- Nette\Security\IIdentity
 	stubFiles:
-		- stubs/Nette/Forms/Container.stub
-		- stubs/Nette/Forms/Controls/BaseControl.stub
 		- stubs/Nette/DI/ContainerBuilder.stub
 		- stubs/Nette/DI/CompilerExtension.stub
 		- stubs/Nette/DI/Definitions/Definition.stub
 		- stubs/Nette/DI/Definitions/ServiceDefinition.stub
-		- stubs/Nette/Application/UI/Form.stub
