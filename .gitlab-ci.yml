@@ -3,7 +3,7 @@ stages:
 
 sniff:
   stage: test
-  image: remp/php-ci:8.2.14
+  image: remp/php-ci:8.4.19
   tags:
     - docker
     - dennikn
